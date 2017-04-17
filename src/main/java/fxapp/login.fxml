@@ -29,7 +29,7 @@
             <Button layoutX="147.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Exit" />
             <ImageView fitHeight="80.0" fitWidth="163.0" layoutX="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../files/gt-logo.png" />
+                  <Image url="@gt-logo.png" />
                </image>
             </ImageView>
          </children>
