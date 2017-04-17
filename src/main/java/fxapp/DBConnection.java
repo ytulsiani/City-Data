@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 
 public class DBConnection {
-    public static void connect() throws SQLException {
+    public static void connect(String query, boolean isQuery) {
         Connection con = null;
 
         try {
@@ -22,8 +22,8 @@ public class DBConnection {
 
             //sql test
 
-            //Statement stmnt = con.createStatement();
-            //stmnt.executeUpdate("INSERT INTO USER (EmailAddress, Username, Password, UserType) VALUES ('blah@blah.com', 'zmudge3', 'password', 'Admin')");
+            Statement stmnt = con.createStatement();
+            stmnt.executeUpdate("INSERT INTO USER (EmailAddress, Username, Password, UserType) VALUES ('blah@blah.com', 'zmudge3', 'password', 'Admin')");
 
             /*while (blah.next()) {
                 String str = blah.getString("EmailAddress");

@@ -15,7 +15,7 @@ public class MainFXApp extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         stage = primaryStage;
-        DBConnection.connect();
+
         initRootLayout();
 
         //test sql statements
