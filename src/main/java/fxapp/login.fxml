@@ -18,7 +18,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="250.0">
+    <AnchorPane minHeight="250.0" minWidth="250.0">
          <children>
             <TextField layoutX="14.0" layoutY="81.0" />
             <TextField layoutX="14.0" layoutY="131.0" />
