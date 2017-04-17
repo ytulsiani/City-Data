@@ -21,10 +21,10 @@ public class DBConnection {
 
 
             //sql test
-            /*
-            Statement stmnt = con.createStatement();
-            stmnt.executeUpdate("INSERT INTO USER (EmailAddress, Username, Password, UserType) VALUES ('blah@blah.com', 'zmudge3', 'password', 'Admin')");
-            */
+
+            //Statement stmnt = con.createStatement();
+            //stmnt.executeUpdate("INSERT INTO USER (EmailAddress, Username, Password, UserType) VALUES ('blah@blah.com', 'zmudge3', 'password', 'Admin')");
+
             /*while (blah.next()) {
                 String str = blah.getString("EmailAddress");
                 if (str == null) {
@@ -33,11 +33,6 @@ public class DBConnection {
                 System.out.println(str);
             }*/
 
-
-
-
-
-            //test
         } catch(Exception e) {
             System.err.println("Exception: " + e.getMessage());
         } finally {
