@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 public class MainFXApp extends Application {
 
     //private Stage activeScreen;
@@ -26,6 +25,7 @@ public class MainFXApp extends Application {
     }
 
     private void initRootLayout() throws Exception {
+
         Pane loginLayout = FXMLLoader.load(getClass().getResource("login.fxml"));
         loginScene = new Scene(loginLayout);
 
