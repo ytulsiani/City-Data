@@ -18,11 +18,20 @@ public class MainFXApp extends Application {
         stage = primaryStage;
         DBConnection.connect();
         initRootLayout();
+
+        //test sql statements
+
+
+
     }
 
     private void initRootLayout() throws Exception {
         Pane loginLayout = FXMLLoader.load(getClass().getResource("login.fxml"));
         loginScene = new Scene(loginLayout);
+
+        //add other loaders and layouts here
+
+        //register controllers
 
 
         stage.setScene(loginScene);

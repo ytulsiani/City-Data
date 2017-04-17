@@ -3,9 +3,12 @@ package fxapp;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
 
 public class DBConnection {
-    public static void connect() {
+    public static void connect() throws SQLException {
         Connection con = null;
 
         try {
@@ -15,6 +18,26 @@ public class DBConnection {
             if (!con.isClosed()) {
                 System.out.println("Successfully connected to MySQL server");
             }
+
+
+            //sql test
+            /*
+            Statement stmnt = con.createStatement();
+            stmnt.executeUpdate("INSERT INTO USER (EmailAddress, Username, Password, UserType) VALUES ('blah@blah.com', 'zmudge3', 'password', 'Admin')");
+            */
+            /*while (blah.next()) {
+                String str = blah.getString("EmailAddress");
+                if (str == null) {
+                    System.out.println("blah");
+                }
+                System.out.println(str);
+            }*/
+
+
+
+
+
+            //test
         } catch(Exception e) {
             System.err.println("Exception: " + e.getMessage());
         } finally {
@@ -26,5 +49,7 @@ public class DBConnection {
                 System.err.println("Exception: " + e.getMessage());
             }
         }
+
+
     }
 }
