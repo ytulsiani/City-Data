@@ -21,8 +21,7 @@ public class MainFXApp extends Application {
     }
 
     private void initRootLayout() throws Exception {
-        Pane loginLayout = FXMLLoader.load(getClass().getClassLoader().getResource("/../resources/sample.fxml"));
-
+        Pane loginLayout = FXMLLoader.load(getClass().getResource("login.fxml"));
         loginScene = new Scene(loginLayout);
 
 
