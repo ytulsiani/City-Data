@@ -4,13 +4,20 @@ import controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 public class MainFXApp extends Application {
-    private LoginController loginScreenController;
-    //private Stage activeScreen;
-    private Scene loginScene;
+
     private Stage stage;
+
+    private Scene loginScene;
+    private Scene registerScene;
+    private Scene mainScene;
+
+    private LoginController loginController;
+    //private RegisterController registerController;
+    //private MainSceneController mainSceneController;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -18,40 +25,58 @@ public class MainFXApp extends Application {
         stage = primaryStage;
 
         initRootLayout();
+    }
 
-        //test sql statements
+    /**
+     * Changes active views
+     * @param s scene to view
+     * @param title window titlebar title
+     */
+    private void setScene(Scene s, String title) {
+        stage.hide();
+        stage.setScene(s);
+        stage.setTitle(title);
+        stage.show();
+    }
 
+    public void setLoginScene() {
+        setScene(loginScene, "Login or Register");
+    }
 
+    public void setRegisterScene() {
+        setScene(registerScene, "Register");
+    }
 
+    public void setMainScene() {
+        setScene(mainScene, "SLS Point of Interest Tool");
     }
 
     private void initRootLayout() throws Exception {
+        //FXML Loaders and layouts
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+        FXMLLoader registerLoader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("sample.fxml"));
 
-        Pane loginLayout = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Pane loginLayout = loginLoader.load();
+        Pane registerLayout = registerLoader.load();
+        Pane mainSceneLayout = mainSceneLoader.load();
+
+        //initialize scenes
+
         loginScene = new Scene(loginLayout);
+        registerScene = new Scene(registerLayout);
+        mainScene = new Scene(mainSceneLayout);
 
-        //add other loaders and layouts here
 
         //register controllers
+        loginController = loginLoader.getController();
+        loginController.register(this);
 
 
-        stage.setScene(loginScene);
-        stage.setTitle("Login");
-        stage.show();
-    }
-    public void setRegisterScene() throws Exception {
 
-        Pane loginLayout = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene newloginScene = new Scene(loginLayout);
+        //set opening scene
 
-        //add other loaders and layouts here
-
-        //register controllers
-
-
-        stage.setScene(newloginScene);
-        stage.setTitle("Register");
-        stage.show();
+        setLoginScene();
     }
 
 

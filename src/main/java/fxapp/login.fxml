@@ -20,9 +20,9 @@
    <children>
     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0">
          <children>
-            <TextField layoutX="14.0" layoutY="89.0" />
+            <TextField layoutX="14.0" layoutY="89.0" fx:id="usernameField"/>
             <TextField layoutX="14.0" layoutY="151.0" />
-            <Button layoutX="16.0" layoutY="197.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Login" />
+            <Button layoutX="16.0" layoutY="197.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" onAction="#onLoginPressed" text="Login" />
             <Label layoutX="14.0" layoutY="63.0" text="Username" />
             <Label layoutX="16.0" layoutY="124.0" text="Password" />
             <Button layoutX="100.0" layoutY="197.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" onAction="#onRegisterPressed" text="Register" />
