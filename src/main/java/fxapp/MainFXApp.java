@@ -1,12 +1,13 @@
 package fxapp;
 
+import controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 public class MainFXApp extends Application {
-
+    private LoginController loginScreenController;
     //private Stage activeScreen;
     private Scene loginScene;
     private Stage stage;
@@ -41,14 +42,14 @@ public class MainFXApp extends Application {
     public void setRegisterScene() throws Exception {
 
         Pane loginLayout = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        loginScene = new Scene(loginLayout);
+        Scene newloginScene = new Scene(loginLayout);
 
         //add other loaders and layouts here
 
         //register controllers
 
 
-        stage.setScene(loginScene);
+        stage.setScene(newloginScene);
         stage.setTitle("Register");
         stage.show();
     }
