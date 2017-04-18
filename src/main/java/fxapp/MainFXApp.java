@@ -38,6 +38,20 @@ public class MainFXApp extends Application {
         stage.setTitle("Login");
         stage.show();
     }
+    public void setRegisterScene() throws Exception {
+
+        Pane loginLayout = FXMLLoader.load(getClass().getResource("login.fxml"));
+        loginScene = new Scene(loginLayout);
+
+        //add other loaders and layouts here
+
+        //register controllers
+
+
+        stage.setScene(loginScene);
+        stage.setTitle("Register");
+        stage.show();
+    }
 
 
     public static void main(String[] args) {

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<GridPane alignment="center" hgap="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -18,15 +18,15 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-    <AnchorPane minHeight="250.0" minWidth="250.0">
+    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0">
          <children>
-            <TextField layoutX="14.0" layoutY="81.0" />
-            <TextField layoutX="14.0" layoutY="131.0" />
-            <Button layoutX="18.0" layoutY="160.0" mnemonicParsing="false" text="Login" />
+            <TextField layoutX="14.0" layoutY="89.0" />
+            <TextField layoutX="14.0" layoutY="151.0" />
+            <Button layoutX="16.0" layoutY="197.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Login" />
             <Label layoutX="14.0" layoutY="63.0" text="Username" />
-            <Label layoutX="16.0" layoutY="114.0" text="Password" />
-            <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Register" />
-            <Button layoutX="147.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Exit" />
+            <Label layoutX="16.0" layoutY="124.0" text="Password" />
+            <Button layoutX="100.0" layoutY="197.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Register" />
+            <Button layoutX="218.0" layoutY="197.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Exit" />
             <ImageView fitHeight="80.0" fitWidth="163.0" layoutX="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@gt-logo.png" />
