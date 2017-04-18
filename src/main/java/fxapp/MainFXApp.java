@@ -40,7 +40,7 @@ public class MainFXApp extends Application {
     }
     public void setRegisterScene() throws Exception {
 
-        Pane loginLayout = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Pane loginLayout = FXMLLoader.load(getClass().getResource("sample.fxml"));
         loginScene = new Scene(loginLayout);
 
         //add other loaders and layouts here

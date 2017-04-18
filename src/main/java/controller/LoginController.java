@@ -35,13 +35,9 @@ public class LoginController {
     public void initialize() {
     }
     @FXML
-    public void onRegisterPressed() {
-        try {
-            main.setRegisterScene();
-        }
-        catch() {
+    public void onRegisterPressed() throws Exception{
+        main.setRegisterScene();
 
-        }
     }
 
 
