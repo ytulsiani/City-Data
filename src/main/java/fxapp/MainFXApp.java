@@ -4,7 +4,6 @@ import controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 public class MainFXApp extends Application {
@@ -54,8 +53,8 @@ public class MainFXApp extends Application {
     private void initRootLayout() throws Exception {
         //FXML Loaders and layouts
         FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("login.fxml"));
-        FXMLLoader registerLoader = new FXMLLoader(getClass().getResource("sample.fxml"));
-        FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        FXMLLoader registerLoader = new FXMLLoader(getClass().getResource("register.fxml"));
+        FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("mainScene.fxml"));
 
         Pane loginLayout = loginLoader.load();
         Pane registerLayout = registerLoader.load();
