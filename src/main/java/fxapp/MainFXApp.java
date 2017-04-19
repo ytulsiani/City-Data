@@ -1,6 +1,7 @@
 package fxapp;
 
 import controller.LoginController;
+import controller.RegisterController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +16,7 @@ public class MainFXApp extends Application {
     private Scene mainScene;
 
     private LoginController loginController;
+    private RegisterController registerController;
     //private RegisterController registerController;
     //private MainSceneController mainSceneController;
 
@@ -54,7 +56,7 @@ public class MainFXApp extends Application {
         //FXML Loaders and layouts
         FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("login.fxml"));
         FXMLLoader registerLoader = new FXMLLoader(getClass().getResource("register.fxml"));
-        FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("mainScene.fxml"));
+        FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("main.fxml"));
 
         Pane loginLayout = loginLoader.load();
         Pane registerLayout = registerLoader.load();
@@ -70,7 +72,8 @@ public class MainFXApp extends Application {
         //register controllers
         loginController = loginLoader.getController();
         loginController.register(this);
-
+        registerController = registerLoader.getController();
+        registerController.register(this);
 
 
         //set opening scene
