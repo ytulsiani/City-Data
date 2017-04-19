@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -30,7 +30,7 @@
    <children>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" GridPane.rowIndex="2">
          <children>
-            <Text layoutX="86.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register New User" textAlignment="CENTER" underline="true" wrappingWidth="228.52606201171875">
+            <Text layoutX="86.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register New City Official" textAlignment="CENTER" underline="true" wrappingWidth="228.52606201171875">
                <font>
                   <Font size="17.0" />
                </font>
@@ -44,11 +44,11 @@
             <Label layoutX="42.0" layoutY="133.0" text="Email" />
             <PasswordField fx:id="passwordField" layoutX="46.0" layoutY="217.0" />
             <PasswordField fx:id="passwordField1" layoutX="46.0" layoutY="284.0" />
-            <MenuButton layoutX="47.0" layoutY="330.0" mnemonicParsing="false" text="choose user type">
+            <MenuButton fx:id="typeSelect" layoutX="47.0" layoutY="330.0" mnemonicParsing="false" text="Select User">
               <items>
-                <MenuItem mnemonicParsing="false" text="City Official" />
-                <MenuItem mnemonicParsing="false" text="option 2" />
-                  <MenuItem mnemonicParsing="false" text="option 3" />
+                <MenuItem fx:id="cityScientistButton" mnemonicParsing="false" onAction="#setRegisterCityScientist" text="City Scientist" />
+                <MenuItem fx:id="cityOfficialButton" mnemonicParsing="false" onAction="#setRegisterCityOfficial" text="City Official" />
+
               </items>
             </MenuButton>
          </children>
