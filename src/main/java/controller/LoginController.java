@@ -16,6 +16,8 @@ public class LoginController {
     private TextField usernameField;
     @FXML
     private Text message;
+    @FXML
+    private Button button;
 
     public void register(MainFXApp main) {
         this.main = main;

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0">
+         <children>
+            <Button fx:id="newDataButton" layoutX="17.0" layoutY="92.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Add data point" />
+            <Button fx:id="pendingCOButton" layoutX="158.0" layoutY="241.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegisterPressed" prefHeight="40.0" prefWidth="135.0" text="Pending City Officials">
+               <font>
+                  <Font size="11.5" />
+               </font></Button>
+            <Text layoutX="16.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serve Learn Sustain:" textAlignment="CENTER" wrappingWidth="270.33330821990967">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="15.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Point of Interest Manager" textAlignment="CENTER" wrappingWidth="270.33330821990967">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button fx:id="newLocationButton" layoutX="165.0" layoutY="92.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Add location" />
+            <Text layoutX="16.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City Scientist" textAlignment="CENTER" wrappingWidth="270.33330821990967">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Line endX="200.0" layoutX="119.0" layoutY="67.0" startX="-150.0" />
+            <Line endX="200.0" layoutX="117.0" layoutY="141.0" startX="-150.0" />
+            <Text layoutX="15.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City Official" textAlignment="CENTER" wrappingWidth="270.33330821990967">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Button fx:id="filterButton" layoutX="17.0" layoutY="166.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="Filter/Search POI">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="poiReportButton" layoutX="165.0" layoutY="166.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="POI Report" />
+            <Line endX="200.0" layoutX="117.0" layoutY="217.0" startX="-150.0" />
+            <Text layoutX="16.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin" textAlignment="CENTER" wrappingWidth="270.33330821990967">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Button fx:id="pendingDataPointsButton" layoutX="9.0" layoutY="241.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegisterPressed" prefHeight="40.0" prefWidth="135.0" text="Pending Data Points">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
