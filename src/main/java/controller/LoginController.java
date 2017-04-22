@@ -1,15 +1,21 @@
 package controller;
 
 import fxapp.MainFXApp;
+import fxapp.DBConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class LoginController {
     private MainFXApp main;
-
+    //private DBConnection dbConnection;
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -24,9 +30,25 @@ public class LoginController {
     }
 
     @FXML
-    public void onLoginPressed() {
-
+    public void onLoginPressed() throws SQLException {
+        Statement stmt = null;
+        Connection con = null;
         //CHANGE SO IT WORKS WITH QUERYING THE DATABSE
+        try {
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+            String query = "SELECT " + username + "," + password + " FROM User WHERE username=%s AND password=%s";
+            con = DBConnection.connect();
+            stmt = con.createStatement();
+            ResultSet loginReturn = stmt.executeQuery(query);
+        } catch(SQLException e) {
+            System.out.println("Something's broken");
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+        //System.out.println(loginReturn);
         /*if (main.notifyLogin(authenticationManager
                 .tokenFromCredentials(usernameField
                         .getText(), passwordField.getText()))) {
