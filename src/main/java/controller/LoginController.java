@@ -31,23 +31,27 @@ public class LoginController {
 
     @FXML
     public void onLoginPressed() throws SQLException {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
         Statement stmt = null;
-        Connection con = null;
-        //CHANGE SO IT WORKS WITH QUERYING THE DATABSE
+        String query = "SELECT Username, Password, UserType FROM cs4400_86.USER WHERE Username = '" + username +
+                "' AND Password = '" + password + "'";
         try {
-            String username = usernameField.getText();
-            String password = passwordField.getText();
-            String query = "SELECT " + username + "," + password + " FROM User WHERE username=%s AND password=%s";
-            con = DBConnection.connect();
-            stmt = con.createStatement();
-            ResultSet loginReturn = stmt.executeQuery(query);
-        } catch(SQLException e) {
-            System.out.println("Something's broken");
+            ResultSet result = DBConnection.connectAndQuery(stmt, query);
+            System.out.println("TEST");
+            while (result.next()) {
+                System.out.println("HELOOO");
+                System.out.println(result.getString("Username"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
         } finally {
             if (stmt != null) {
                 stmt.close();
             }
         }
+
+
         //System.out.println(loginReturn);
         /*if (main.notifyLogin(authenticationManager
                 .tokenFromCredentials(usernameField
