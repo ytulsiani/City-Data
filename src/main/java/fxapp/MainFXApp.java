@@ -1,6 +1,7 @@
 package fxapp;
 
 import controller.LoginController;
+import controller.MainController;
 import controller.RegisterController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,7 @@ public class MainFXApp extends Application {
 
     private LoginController loginController;
     private RegisterController registerController;
-    //private MainSceneController mainSceneController;
+    private MainController mainSceneController;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -47,8 +48,9 @@ public class MainFXApp extends Application {
         setScene(registerScene, "Register");
     }
 
-    public void setMainScene() {
+    public void setMainScene(String usertype) {
         setScene(mainScene, "SLS Point of Interest Tool");
+        mainSceneController.setScreen(usertype);
     }
 
     private void initRootLayout() throws Exception {
