@@ -8,6 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import fxapp.DBConnection;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  * Created by Yash on 4/18/2017.
  */
@@ -26,15 +30,41 @@ public class RegisterController {
     private ComboBox selectState;
     @FXML
     private ComboBox selectCity;
+    @FXML
+    private Text errorText;
 
     public void register(MainFXApp main) {
         this.main = main;
     }
 
     @FXML
-    public void onRegisterPressed() {
-        main.setRegisterScene();
+    public void onRegisterPressed() throws SQLException {
+        if (checkUNUnique(usernameField.getText()) == false) {
+            errorText.setText("An account with that username already exists!");
+        }
+
+        //main.setLoginScene();
     }
+
+    private boolean checkUNUnique(String username) throws SQLException{
+        Statement stmt = null;
+        String query = "SELECT Username FROM USER WHERE Username = '" + username + "'";
+        try {
+            ResultSet result = DBConnection.connectAndQuery(stmt, query);
+            while (result.next()) {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+        return true;
+    }
+
+
 
     @FXML
     public void initialize() {
@@ -46,11 +76,12 @@ public class RegisterController {
     }
     @FXML
     public void switchBox() {
-//        if (comboBox.getValue() == "City Official") {
-//            main.setMainScene(UserType.CITY_OFFICIAL);
-//        } else if (comboBox.getValue() == "City Scientist") {
-//            main.setMainScene(UserType.)
-//        }
+        if (comboBox.getValue() == "City Official") {
+            //main.setMainScene(UserType.CITY_OFFICIAL);
+
+        } else if (comboBox.getValue() == "City Scientist") {
+            //main.setMainScene(UserType.)
+        }
     }
     @FXML
     public void switchBoxState() {
