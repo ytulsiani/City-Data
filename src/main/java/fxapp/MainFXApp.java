@@ -17,9 +17,9 @@ public class MainFXApp extends Application {
     private Scene addDPScene;
     private Scene addLocationScene;
     private Scene filterScene;
-//    private Scene poiReportScene;
-//    private Scene pendingDPScene;
-//    private Scene pendingCOScene;
+    private Scene poiReportScene;
+    private Scene pendingDPScene;
+    private Scene pendingCOScene;
 
     private LoginController loginController;
     private RegisterController registerController;
@@ -72,6 +72,19 @@ public class MainFXApp extends Application {
     public void setFilterPOIScene() {
         setScene(filterScene, "Filter POI");
     }
+    public void setPOIReportScene() {
+        setScene(poiReportScene, "POI Report");
+    }
+
+    public void setPendingDPScene() {
+        setScene(pendingDPScene, "Pending Datapoints");
+    }
+
+    public void setPendingCOScene() {
+        setScene(pendingCOScene, "Pending City Officials");
+    }
+
+
     private void initRootLayout() throws Exception {
         //FXML Loaders and layouts
         FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("login.fxml"));
@@ -80,9 +93,9 @@ public class MainFXApp extends Application {
         FXMLLoader dpLoader = new FXMLLoader(getClass().getResource("addPoint.fxml"));
         FXMLLoader addLocationLoader = new FXMLLoader(getClass().getResource("addLocation.fxml"));
         FXMLLoader filterPOILoader = new FXMLLoader(getClass().getResource("filterPOI.fxml"));
-//        FXMLLoader poiReportLoader = new FXMLLoader(getClass().getResource("POIReport.fxml"));
-//        FXMLLoader pendingDPLoader = new FXMLLoader(getClass().getResource("pendingDP.fxml"));
-//        FXMLLoader pendingCOLoader = new FXMLLoader(getClass().getResource("pendingCO.fxml"));
+        FXMLLoader poiReportLoader = new FXMLLoader(getClass().getResource("POIReport.fxml"));
+        FXMLLoader pendingDPLoader = new FXMLLoader(getClass().getResource("pendingDP.fxml"));
+        FXMLLoader pendingCOLoader = new FXMLLoader(getClass().getResource("pendingCO.fxml"));
 
         Pane loginLayout = loginLoader.load();
         Pane registerLayout = registerLoader.load();
@@ -90,9 +103,9 @@ public class MainFXApp extends Application {
         Pane addDPLayout = dpLoader.load();
         Pane addLocationLayout = addLocationLoader.load();
         Pane filterPOILayout = filterPOILoader.load();
-//        Pane poiReportLayout = poiReportLoader.load();
-//        Pane pendingDPLayout = pendingDPLoader.load();
-//        Pane pendingCOLayout = pendingCOLoader.load();
+        Pane poiReportLayout = poiReportLoader.load();
+        Pane pendingDPLayout = pendingDPLoader.load();
+        Pane pendingCOLayout = pendingCOLoader.load();
 
         //initialize scenes
 
@@ -102,7 +115,9 @@ public class MainFXApp extends Application {
         addDPScene = new Scene(addDPLayout);
         addLocationScene = new Scene(addLocationLayout);
         filterScene = new Scene(filterPOILayout);
-
+        poiReportScene = new Scene(poiReportLayout);
+        pendingDPScene = new Scene(pendingDPLayout);
+        pendingCOScene = new Scene(pendingCOLayout);
 
         //register controllers
         loginController = loginLoader.getController();
@@ -117,6 +132,12 @@ public class MainFXApp extends Application {
         addLocationController.register(this);
         filterPOIController = filterPOILoader.getController();
         filterPOIController.register(this);
+        poiReportController = poiReportLoader.getController();
+        poiReportController.register(this);
+        pendingDPController = pendingDPLoader.getController();
+        pendingDPController.register(this);
+        pendingCOController = pendingCOLoader.getController();
+        pendingCOController.register(this);
         //set opening scene
 
         setLoginScene();

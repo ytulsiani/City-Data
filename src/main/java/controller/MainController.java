@@ -44,9 +44,8 @@ public class MainController {
         } else if (userType.equals("Admin")) {
             newDataButton.setDisable(true);
             newLocationButton.setDisable(true);
-            pendingDataPointsButton.setDisable(true);
-            pendingCOButton.setDisable(true);
-        }
+            filterButton.setDisable(true);
+            poiReportButton.setDisable(true);        }
     }
     @FXML
     public void onAddDP() {
