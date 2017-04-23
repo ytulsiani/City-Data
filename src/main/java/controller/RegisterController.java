@@ -160,6 +160,7 @@ public class RegisterController {
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
+                System.out.println("YO ZACL");
                 selectState.getItems().add(result.getString("State"));
             }
         } catch (SQLException e) {
@@ -183,9 +184,25 @@ public class RegisterController {
 //        }
 //    }
     @FXML
-    public void switchBoxState() {
+    public void switchBoxState() throws SQLException{
         //ADD CODE WHICH ADDS ALL CITIES WITHIN A STATE W/ SQL
         System.out.println(selectState.getValue());
+        String state = selectState.getValue().toString();
+        Statement stmt = null;
+        String query = "SELECT City FROM CITY_STATE WHERE State = '" +
+                state + "'";
+        try {
+            ResultSet result = DBConnection.connectAndQuery(stmt, query);
+            while (result.next()) {
+                selectState.getItems().add(result.getString("State"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
     }
     @FXML
     public void switchBoxCity() {
