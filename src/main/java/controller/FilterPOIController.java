@@ -2,15 +2,16 @@ package controller;
 
 import fxapp.DBConnection;
 import fxapp.MainFXApp;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Yash on 4/23/2017.
@@ -36,23 +37,64 @@ public class FilterPOIController {
     @FXML
     private Button resetFilter;
     @FXML
+    private DatePicker date1;
+    @FXML
+    private DatePicker date2;
+    @FXML
     private Button back;
-
+    @FXML
+    private TableView table;
 
     @FXML
-    public void onApplyFilterClick() {
-        String query = "SELECT * from POI WHERE ";
+    public void onApplyFilterClick() throws SQLException {
+        String query = "SELECT * FROM POI WHERE ";
         Object locationBox = locationName.getSelectionModel().getSelectedItem();
         Object stateBox = state.getSelectionModel().getSelectedItem();
         Object cityBox = city.getSelectionModel().getSelectedItem();
-/*
+        ObservableList<ArrayList<String>> data = FXCollections.<ArrayList<String>>observableArrayList();
+        if(flagged.isSelected()) {
+            query += "Flag = 'true' ";
+        } else {
+            query += "Flag = 'false' OR Flag = 'NULL' ";
+        }
+
         if (locationBox != null) {
-            query += "LocationName = '" + locationName + "'";
-        } else if (city == null) {
-            System.out.println("Please select a city!");
-        } else if (title ""){
-            System.out.println("Please set a title!");
-        }*/
+            query += "AND LocationName = '" + locationName.getValue().toString() + "' ";
+        } if (cityBox != null) {
+            query += "AND City = '" + city.getValue().toString() + "' ";
+        } if (stateBox != null){
+            query += "AND State = '" + state.getValue().toString() + "' ";
+        }  if (zipCode != null) {
+            query += "AND ZipCode = '" +zipCode + "' ";
+        } if (date1 != null) {
+            System.out.println("DATE1: " + date1.toString());
+        } if (date2 != null) {
+            System.out.println("DATE2: " + date2.toString());
+        }
+        Statement stmt = null;
+        try {
+            System.out.println(query);
+            ResultSet result = DBConnection.connectAndQuery(stmt, query);
+            while (result.next()) {
+                ArrayList<String> data1 = new ArrayList<String>();
+                data1.add(result.getString("LocationName"));
+                data1.add(result.getString("City"));
+                data1.add(result.getString("State"));
+                data1.add(result.getString("ZipCode"));
+                data1.add(result.getString("Flag"));
+                data1.add(result.getString("DateFlagged"));
+                System.out.println(data1);
+                data.add(data1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            table.setItems(data);
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+
     }
 
     @FXML
