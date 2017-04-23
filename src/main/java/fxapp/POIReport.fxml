@@ -32,8 +32,8 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button fx:id="resetFilter" layoutX="184.0" layoutY="504.0" mnemonicParsing="false" text="Back" />
-            <TableView layoutX="-326.0" layoutY="178.0" prefHeight="89.0" prefWidth="1060.0">
+            <Button fx:id="back" layoutX="184.0" layoutY="504.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
+            <TableView fx:id="poiReportTable" layoutX="-326.0" layoutY="178.0" prefHeight="89.0" prefWidth="1060.0">
               <columns>
                 <TableColumn prefWidth="113.0" text="POI Location" />
                 <TableColumn prefWidth="100.0" text="City" />
