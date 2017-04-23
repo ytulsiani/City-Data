@@ -17,7 +17,6 @@ public class MainFXApp extends Application {
 
     private LoginController loginController;
     private RegisterController registerController;
-    //private RegisterController registerController;
     //private MainSceneController mainSceneController;
 
     @Override

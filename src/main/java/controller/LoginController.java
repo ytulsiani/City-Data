@@ -42,6 +42,7 @@ public class LoginController {
             while (result.next()) {
                 System.out.println("HELOOO");
                 System.out.println(result.getString("Username"));
+                result.getString("UserType");
             }
         } catch (SQLException e) {
             System.out.println(e);
