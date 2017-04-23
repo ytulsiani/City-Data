@@ -38,6 +38,7 @@ public class AddDPController {
 
     @FXML
     public void onAddLocationClick() {
+        main.setAddLocationScene();
     }
 
     @FXML
