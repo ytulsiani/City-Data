@@ -55,7 +55,7 @@ public class FilterPOIController {
         if(flagged.isSelected()) {
             query += "Flag = true ";
         } else {
-            query += "(Flag = false OR Flag = NULL) ";
+            query += "Flag = false OR Flag = NULL ";
         }
 
         if (locationBox != null) {
