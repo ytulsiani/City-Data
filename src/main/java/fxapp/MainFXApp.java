@@ -7,6 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
+
 public class MainFXApp extends Application {
 
     private Stage stage;
@@ -82,12 +85,14 @@ public class MainFXApp extends Application {
         setScene(poiReportScene, "POI Report");
     }
 
-    public void setPendingDPScene() {
+    public void setPendingDPScene() throws SQLException{
         setScene(pendingDPScene, "Pending Datapoints");
+        pendingDPController.loadData();
     }
 
-    public void setPendingCOScene() {
+    public void setPendingCOScene() throws SQLException {
         setScene(pendingCOScene, "Pending City Officials");
+        pendingCOController.loadData();
     }
 
 

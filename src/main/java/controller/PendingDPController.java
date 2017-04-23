@@ -43,14 +43,19 @@ public class PendingDPController {
 
     @FXML
     public void onAcceptClick() {
+        System.out.println("ACCEPT CLICK");
     }
     @FXML
     public void initalize() throws SQLException {
-        ObservableList<ArrayList<String>> data = FXCollections.<ArrayList<String>>observableArrayList();
+        loadData();
+    }
+    public void loadData() throws SQLException {
         Statement stmt = null;
-        String query = "SELECT * FROM DATA_POINT WHERE Accepted = NULL";
+        String query = "SELECT * FROM DATA_POINT WHERE Accepted IS NULL";
+        System.out.println("TEST");
+        ObservableList<ArrayList<String>> data = FXCollections.<ArrayList<String>>observableArrayList();
+
         try {
-            print(query);
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
                 System.out.println("IN LIOOOOOOPP");
@@ -71,9 +76,6 @@ public class PendingDPController {
                 stmt.close();
             }
         }
-    }
-        public void print(String pString) {
-            System.out.println("WHAT THE FUCK");
     }
 
 }

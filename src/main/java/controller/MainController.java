@@ -4,6 +4,8 @@ import fxapp.UserType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.sql.SQLException;
+
 /**
  * Created by Yash on 4/22/2017.
  */
@@ -64,11 +66,11 @@ public class MainController {
         main.setPOIReportScene();
     }
     @FXML
-    public void onPendingDP() {
+    public void onPendingDP() throws SQLException {
         main.setPendingDPScene();
     }
     @FXML
-    public void onPendingCity() {
+    public void onPendingCity() throws SQLException {
         main.setPendingCOScene();
     }
 
