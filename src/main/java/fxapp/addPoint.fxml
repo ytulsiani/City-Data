@@ -34,37 +34,37 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <ComboBox layoutX="120.0" layoutY="46.0" prefWidth="150.0" />
+            <ComboBox fx:id="poiLocationName" layoutX="120.0" layoutY="46.0" prefWidth="150.0" />
             <Text layoutX="-56.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POI location name:" textAlignment="CENTER" wrappingWidth="216.33330821990967">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Button alignment="CENTER" layoutX="286.0" layoutY="50.0" mnemonicParsing="false" text="add a new location">
+            <Button fx:id="addLocation" alignment="CENTER" layoutX="286.0" layoutY="50.0" mnemonicParsing="false" onAction="#onAddLocationClick" text="add a new location">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <DatePicker layoutX="122.0" layoutY="90.0" prefHeight="16.0" prefWidth="121.0" />
+            <DatePicker fx:id="timeDateReading" layoutX="122.0" layoutY="90.0" prefHeight="16.0" prefWidth="121.0" />
             <Text layoutX="-58.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="time and date of data reading" textAlignment="CENTER" wrappingWidth="181.50000432506204">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <ComboBox layoutX="121.0" layoutY="135.0" prefWidth="150.0" />
+            <ComboBox fx:id="dataType" layoutX="121.0" layoutY="135.0" prefWidth="150.0" />
             <Text layoutX="40.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data type:" textAlignment="CENTER" wrappingWidth="77.50000432506204">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <TextField layoutX="121.0" layoutY="180.0" prefHeight="31.0" prefWidth="147.0" />
+            <TextField fx:id="dataValue" layoutX="121.0" layoutY="180.0" prefHeight="31.0" prefWidth="147.0" />
             <Text layoutX="39.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data value:" textAlignment="CENTER" wrappingWidth="77.50000432506204">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Button layoutX="87.0" layoutY="227.0" mnemonicParsing="false" text="Back" />
-            <Button layoutX="209.0" layoutY="228.0" mnemonicParsing="false" text="Submit" />
+            <Button fx:id="back" layoutX="87.0" layoutY="227.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
+            <Button fx:id="submit" layoutX="209.0" layoutY="228.0" mnemonicParsing="false" onAction="#onSubmitClick" text="Submit" />
          </children>
       </AnchorPane>
    </children>
