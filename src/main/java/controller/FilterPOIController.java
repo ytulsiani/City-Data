@@ -35,6 +35,8 @@ public class FilterPOIController {
     private Button applyFilter;
     @FXML
     private Button resetFilter;
+    @FXML
+    private Button back;
 
 
     @FXML
@@ -185,5 +187,10 @@ public class FilterPOIController {
             }
         }*/
 
+    }
+
+    @FXML
+    public void onBackClick() {
+        main.setMainScene(MainFXApp.userType, MainFXApp.user);
     }
 }
