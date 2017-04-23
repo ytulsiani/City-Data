@@ -35,7 +35,7 @@
             <Button fx:id="back" layoutX="10.0" layoutY="504.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
             <Button fx:id="reject" layoutX="184.0" layoutY="504.0" mnemonicParsing="false" onAction="#onRejectClick" text="Reject" />
             <Button fx:id="accept" layoutX="353.0" layoutY="504.0" mnemonicParsing="false" onAction="#onAcceptClick" text="Accept" />
-            <TableView fx:id="pendingCOTable" layoutX="-102.0" layoutY="178.0" prefHeight="89.0" prefWidth="608.0">
+            <TableView fx:id="pendingCOTable" layoutX="-102.0" layoutY="149.0" prefHeight="323.0" prefWidth="608.0">
               <columns>
                 <TableColumn prefWidth="81.0" text="Select" />
                 <TableColumn prefWidth="109.0" text="Username" />
