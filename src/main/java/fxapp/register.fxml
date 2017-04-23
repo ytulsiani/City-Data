@@ -42,7 +42,7 @@
             <TextField fx:id="emailField" layoutX="40.0" layoutY="159.0" />
             <Label layoutX="42.0" layoutY="133.0" text="Email" />
             <PasswordField fx:id="passwordField" layoutX="38.0" layoutY="217.0" />
-            <PasswordField fx:id="passwordField1" layoutX="40.0" layoutY="277.0" />
+            <PasswordField fx:id="confirmPasswordField" layoutX="40.0" layoutY="277.0" />
             <ComboBox fx:id="comboBox" layoutX="36.0" layoutY="347.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchBox" prefHeight="35.0" prefWidth="169.0" promptText="Select User" />
             <ComboBox fx:id="selectState" layoutX="16.0" layoutY="461.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchBoxState" prefHeight="35.0" prefWidth="169.0" promptText="Select State" />
             <ComboBox fx:id="selectCity" layoutX="219.0" layoutY="461.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchBoxCity" prefHeight="35.0" prefWidth="169.0" promptText="Select City" />

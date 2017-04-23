@@ -21,7 +21,11 @@ public class RegisterController {
     @FXML
     private PasswordField passwordField;
     @FXML
+    private PasswordField confirmPasswordField;
+    @FXML
     private TextField usernameField;
+    @FXML
+    private TextField emailField;
     @FXML
     private Text message;
     @FXML
@@ -41,8 +45,20 @@ public class RegisterController {
     public void onRegisterPressed() throws SQLException {
         if (checkUNUnique(usernameField.getText()) == false) {
             errorText.setText("An account with that username already exists!");
+        } else if (checkEmailUnique(emailField.getText()) == false) {
+            errorText.setText("An account with that email address already exists!");
+        } else if (!passwordField.getText().equals(confirmPasswordField.getText())){
+            errorText.setText("Passwords do not match!");
+        }
+        String userType = "";
+        if (comboBox.getValue() == "City Scientist") {
+            userType = "City Scientist";
+        } else {
+            userType = "City Official";
+
         }
 
+        //Put user in database
         //main.setLoginScene();
     }
 
@@ -64,7 +80,23 @@ public class RegisterController {
         return true;
     }
 
-
+    private boolean checkEmailUnique(String email) throws SQLException {
+        Statement stmt = null;
+        String query = "SELECT EmailAddress FROM USER WHERE EmailAddress = '" + email + "'";
+        try {
+            ResultSet result = DBConnection.connectAndQuery(stmt, query);
+            while (result.next()) {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+        return true;
+    }
 
     @FXML
     public void initialize() {
