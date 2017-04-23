@@ -24,7 +24,10 @@ public class PendingCOController {
     @FXML
     private Button accept;
 
-
+    @FXML
+    public void initalize() {
+        System.out.println("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGg");
+    }
     @FXML
     public void onBackClick() {
         main.setMainScene(MainFXApp.userType, MainFXApp.user);
