@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="652.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FilterPOIController">
+<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="652.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FilterPOIController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -46,9 +46,9 @@
             <CheckBox fx:id="flagged" contentDisplay="GRAPHIC_ONLY" layoutX="131.0" layoutY="333.0" mnemonicParsing="false" text="Flagged?" />
             <Label layoutX="41.0" layoutY="333.0" text="Flagged?" />
             <Label layoutX="41.0" layoutY="367.0" text="Date Flagged" />
-            <DatePicker fx:id="date1" layoutX="136.0" layoutY="362.0" prefHeight="27.0" prefWidth="69.0" promptText=" /  /" />
-            <DatePicker fx:id="date2" layoutX="248.0" layoutY="362.0" prefHeight="27.0" prefWidth="69.0" promptText=" /  /" />
-            <Label layoutX="215.0" layoutY="367.0" text="to" />
+            <DatePicker fx:id="date1" layoutX="121.0" layoutY="362.0" prefHeight="27.0" prefWidth="119.0" promptText=" /  /" />
+            <DatePicker fx:id="date2" layoutX="281.0" layoutY="362.0" prefHeight="27.0" prefWidth="119.0" promptText=" /  /" />
+            <Label layoutX="250.0" layoutY="367.0" text="to" />
             <Button fx:id="applyFilter" layoutX="156.0" layoutY="413.0" mnemonicParsing="false" onAction="#onApplyFilterClick" text="Apply Filter" />
             <Button fx:id="resetFilter" layoutX="263.0" layoutY="413.0" mnemonicParsing="false" onAction="#onResetFilterClick" text="Reset Filter" />
             <ComboBox fx:id="city" layoutX="187.0" layoutY="193.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#citySelected" prefHeight="35.0" prefWidth="151.0" promptText="city" />
