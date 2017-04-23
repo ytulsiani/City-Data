@@ -6,9 +6,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -52,6 +54,8 @@ public class FilterPOIController {
     private Button back;
     @FXML
     private TableView table;
+    @FXML
+    private Button nextButton;
     @FXML
     private TableColumn<POI, String> locationCol;
     @FXML
@@ -159,6 +163,12 @@ public class FilterPOIController {
             }
         }
     }
+
+    @FXML
+    public void onNextPressed() throws SQLException {
+        main.setPOIDetailScene((POI) table.getSelectionModel().getSelectedItem());
+    }
+
     @FXML
     public void locationSelected() throws SQLException{
         city.getItems().removeAll(city.getItems());

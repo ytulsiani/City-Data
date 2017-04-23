@@ -27,6 +27,7 @@ public class MainFXApp extends Application {
     private Scene poiReportScene;
     private Scene pendingDPScene;
     private Scene pendingCOScene;
+    private Scene poiDetailScene;
 
     private LoginController loginController;
     private RegisterController registerController;
@@ -37,6 +38,7 @@ public class MainFXApp extends Application {
     private POIReportController poiReportController;
     private PendingDPController pendingDPController;
     private PendingCOController pendingCOController;
+    private POIDetailController poiDetailController;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -95,6 +97,11 @@ public class MainFXApp extends Application {
         pendingCOController.loadData();
     }
 
+    public void setPOIDetailScene(POI point) throws SQLException {
+        setScene(poiDetailScene, "POI Detail");
+        poiDetailController.loadPoint(point);
+    }
+
 
     private void initRootLayout() throws Exception {
         //FXML Loaders and layouts
@@ -107,6 +114,7 @@ public class MainFXApp extends Application {
         FXMLLoader poiReportLoader = new FXMLLoader(getClass().getResource("POIReport.fxml"));
         FXMLLoader pendingDPLoader = new FXMLLoader(getClass().getResource("pendingDP.fxml"));
         FXMLLoader pendingCOLoader = new FXMLLoader(getClass().getResource("pendingCO.fxml"));
+        FXMLLoader poiDetailLoader = new FXMLLoader(getClass().getResource("POIDetail.fxml"));
 
         Pane loginLayout = loginLoader.load();
         Pane registerLayout = registerLoader.load();
@@ -117,6 +125,7 @@ public class MainFXApp extends Application {
         Pane poiReportLayout = poiReportLoader.load();
         Pane pendingDPLayout = pendingDPLoader.load();
         Pane pendingCOLayout = pendingCOLoader.load();
+        Pane poiDetailLayout = poiDetailLoader.load();
 
         //initialize scenes
 
@@ -129,6 +138,7 @@ public class MainFXApp extends Application {
         poiReportScene = new Scene(poiReportLayout);
         pendingDPScene = new Scene(pendingDPLayout);
         pendingCOScene = new Scene(pendingCOLayout);
+        poiDetailScene = new Scene(poiDetailLayout);
 
         //register controllers
         loginController = loginLoader.getController();
@@ -149,6 +159,8 @@ public class MainFXApp extends Application {
         pendingDPController.register(this);
         pendingCOController = pendingCOLoader.getController();
         pendingCOController.register(this);
+        poiDetailController = poiDetailLoader.getController();
+        poiDetailController.register(this);
 
         //set opening scene
         setLoginScene();

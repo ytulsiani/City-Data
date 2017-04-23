@@ -2,6 +2,7 @@ package controller;
 
 import fxapp.DBConnection;
 import fxapp.MainFXApp;
+import fxapp.POI;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -42,6 +43,12 @@ public class POIDetailController {
 
     private String locationName;
 
+    private POI point;
+
+
+    public void loadPoint(POI point) {
+        this.point = point;
+    }
 
     @FXML
     public void onApplyFilterClick() throws SQLException {
