@@ -258,4 +258,6 @@ public class FilterPOIController {
     public void onBackClick() {
         main.setMainScene(MainFXApp.userType, MainFXApp.user);
     }
+
+    
 }
