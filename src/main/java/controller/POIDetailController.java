@@ -1,8 +1,13 @@
 package controller;
 
+import fxapp.DBConnection;
 import fxapp.MainFXApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by Mahati on 4/23/2017.
@@ -35,9 +40,41 @@ public class POIDetailController {
     @FXML
     private Button flag;
 
+    private String locationName;
+
 
     @FXML
-    public void onApplyFilterClick() {
+    public void onApplyFilterClick() throws SQLException {
+        Statement stmt = null;
+        String query = "SELECT * FROM POI WHERE LocationName = '" + locationName +
+                "'";
+        if (type.getValue() != null) {
+            query += " AND Type = '" + type.getValue().toString();
+        }
+        if (!dataValue1.getText().equals("")) {
+            query += " AND DataValue > '" + Integer.parseInt(dataValue1.getText()) + "'";
+        }
+        if (!dataValue2.getText().equals("")) {
+            query += " AND DataValue < '" + Integer.parseInt(dataValue2.getText()) + "'";
+        }
+        if(date1.getValue() != null) {
+            System.out.println(date1.getValue().toString());
+        }
+        if(date2.getValue() != null) {
+            System.out.println(date2.getValue().toString());
+        }
+        try {
+            ResultSet result = DBConnection.connectAndQuery(stmt, query);
+            while (result.next()) {
+                //
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
 
     }
     @FXML
