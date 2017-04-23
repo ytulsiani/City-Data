@@ -53,7 +53,7 @@
             <Button fx:id="resetFilter" layoutX="263.0" layoutY="413.0" mnemonicParsing="false" onAction="#onResetFilterClick" text="Reset Filter" />
             <ComboBox fx:id="city" layoutX="187.0" layoutY="193.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#citySelected" prefHeight="35.0" prefWidth="151.0" promptText="city" />
             <ComboBox fx:id="state" layoutX="187.0" layoutY="237.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#stateSelected" prefHeight="35.0" prefWidth="151.0" promptText="state" />
-            <TextField fx:id="zip" layoutX="190.0" layoutY="286.0" prefHeight="27.0" prefWidth="88.0" />
+            <TextField fx:id="zipCode" layoutX="190.0" layoutY="286.0" prefHeight="27.0" prefWidth="88.0" />
             <Line endX="180.0" layoutX="200.0" layoutY="450.0" startX="-180.0" />
             <TableView fx:id="table" layoutX="-66.0" layoutY="463.0" prefHeight="89.0" prefWidth="542.0">
               <columns>

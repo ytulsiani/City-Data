@@ -52,24 +52,24 @@ public class FilterPOIController {
         Object stateBox = state.getSelectionModel().getSelectedItem();
         Object cityBox = city.getSelectionModel().getSelectedItem();
         ObservableList<ArrayList<String>> data = FXCollections.<ArrayList<String>>observableArrayList();
-        if(flagged.isSelected()) {
-            query += "Flag = true ";
-        } else {
-            query += "Flag = false OR Flag = NULL ";
-        }
+//        if(flagged.isSelected()) {
+//            query += "'Flag' = true ";
+//        } else {
+//            query += "('Flag' = false OR 'Flag' = NULL) ";
+//        }
 
         if (locationBox != null) {
-            query += "AND LocationName = '" + locationName.getValue().toString() + "' ";
+            query += "LocationName = '" + locationName.getValue().toString() + "' ";
         } if (cityBox != null) {
             query += "AND City = '" + city.getValue().toString() + "' ";
         } if (stateBox != null){
-            query += "AND State = '" + state.getValue().toString() + "' ";
-        }  if (zipCode != null) {
-            query += "AND ZipCode = '" +zipCode + "' ";
-        } if (date1 != null) {
-            System.out.println("DATE1: " + date1.toString());
-        } if (date2 != null) {
-            System.out.println("DATE2: " + date2.toString());
+            query += "State = '" + state.getValue().toString() + "' ";
+        }  if (!zipCode.getText().equals("")) {
+            query += "AND ZipCode = '" + zipCode.getText() + "' ";
+        } if (date1.getValue() != null) {
+            System.out.println("DATE1: " + date1.getValue().toString());
+        } if (date2.getValue() != null) {
+            System.out.println("DATE2: " + date2.getValue().toString());
         }
         Statement stmt = null;
         try {
@@ -102,7 +102,7 @@ public class FilterPOIController {
     public void onResetFilterClick() {
     }
     @FXML
-    public void initialize() throws SQLException{
+    public void initialize() throws SQLException {
         Statement stmt = null;
         String query = "SELECT DISTINCT LocationName, City, State FROM POI";
         Statement stmt1 = null;
