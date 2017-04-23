@@ -97,8 +97,8 @@ public class FilterPOIController {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
                 //ArrayList<String> data1 = new ArrayList<String>();
-                POI poi = new POI(result.getString("LocationName"), result.getString("City"), result.getString("State"),
-                        result.getString("ZipCode"), result.getString("Flag"), result.getString("DateFlagged"));
+                POI poi = new POI(result.getString("LocationName"), result.getString("Flag"), result.getString("DateFlagged"),
+                        result.getString("ZipCode"), result.getString("City"), result.getString("State"));
                 data.add(poi);
             }
         } catch (SQLException e) {
@@ -111,39 +111,13 @@ public class FilterPOIController {
         }
 
         locationCol.setCellValueFactory(cellData -> cellData.getValue().getLocation());
-        cityCol.setCellValueFactory(new PropertyValueFactory<ArrayList<String>, String>("city"));
-        stateCol.setCellValueFactory(new PropertyValueFactory<ArrayList<String>, String>("state"));
-        zipCol.setCellValueFactory(new PropertyValueFactory<ArrayList<String>, String>("zip"));
-        flaggedCol.setCellValueFactory(new PropertyValueFactory<ArrayList<String>, String>("flagged"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<ArrayList<String>, String>("date"));
-//
-//        locationCol.setCellFactory(new Callback<TableColumn.CellDataFeatures<ArrayList<String>, String>, ObservableValue<String>>() {
-//            @Override
-//            public ObservableValue<String> call(TableColumn.CellDataFeatures<ArrayList<String>, String> p) {
-//                //return new SimpleStringProperty("test");
-//                return null;
-//            }
-//        });
-
-        //table.getColumns().addAll(locationCol, cityCol, stateCol, zipCol, flaggedCol, dateCol);
-//        for (Object c : table.getColumns()) {
-//            TableColumn d = (TableColumn) c;
-//            d.setCellFactory(new Callback<TableColumn, TableCell>() {
-//                @Override
-//                public TableCell call(TableColumn param) {
-//                    return null;
-//                }
-//            });
-//        }
+        cityCol.setCellValueFactory(cellData -> cellData.getValue().getCity());
+        stateCol.setCellValueFactory(cellData -> cellData.getValue().getState());
+        zipCol.setCellValueFactory(cellData -> cellData.getValue().getZipcode());
+        flaggedCol.setCellValueFactory(cellData -> cellData.getValue().getFlag());
+        dateCol.setCellValueFactory(cellData -> cellData.getValue().getDate());
 
         table.setItems(data);
-        //OBSERVABLE LIST
-        //locationCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ArrayList<String>, String>, ObservableValue<String>>());
-
-
-
-        //table.getItems().add();
-        //table.getItems().add("blah");
     }
 
     @FXML

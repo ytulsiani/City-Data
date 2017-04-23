@@ -6,12 +6,12 @@ import javafx.beans.property.SimpleStringProperty;
  * Created by zackmudge on 4/23/17.
  */
 public class POI {
-    public SimpleStringProperty locationName = new SimpleStringProperty();
-    public SimpleStringProperty flag = new SimpleStringProperty();
-    public SimpleStringProperty dateFlagged = new SimpleStringProperty();
-    public SimpleStringProperty zipCode = new SimpleStringProperty();
-    public SimpleStringProperty city = new SimpleStringProperty();
-    public SimpleStringProperty state = new SimpleStringProperty();
+    private SimpleStringProperty locationName = new SimpleStringProperty();
+    private SimpleStringProperty flag = new SimpleStringProperty();
+    private SimpleStringProperty dateFlagged = new SimpleStringProperty();
+    private SimpleStringProperty zipCode = new SimpleStringProperty();
+    private SimpleStringProperty city = new SimpleStringProperty();
+    private SimpleStringProperty state = new SimpleStringProperty();
 
     public POI(String locationName1, String flag1, String dateFlagged1, String zipCode1, String city1, String state1) {
         System.out.println(locationName1);
