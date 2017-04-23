@@ -48,4 +48,29 @@ public class MainController {
             pendingCOButton.setDisable(true);
         }
     }
+    @FXML
+    public void onAddDP() {
+        main.setAddDPScene();
+    }
+    @FXML
+    public void onAddLocation() {
+
+    }
+    @FXML
+    public void onFilterPOI() {
+
+    }
+    @FXML
+    public void onPOIReport() {
+
+    }
+    @FXML
+    public void onPendingDP() {
+
+    }
+    @FXML
+    public void onPendingCity() {
+
+    }
+
 }
