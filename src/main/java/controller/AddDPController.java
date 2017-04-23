@@ -41,6 +41,9 @@ public class AddDPController {
 
     @FXML
     public void onSubmitClick() {
+        //String locationName = poiLocationName.getValue().toString();
+        //System.out.println(timeDataReading.toString());
+
     }
 
 }

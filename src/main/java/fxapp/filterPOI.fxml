@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="550.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FilterPOIController">
+<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="652.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FilterPOIController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -31,7 +32,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="400.0" GridPane.rowIndex="2">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="400.0" GridPane.rowIndex="2">
          <children>
             <Text layoutX="88.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View POIs" textAlignment="CENTER" underline="true" wrappingWidth="228.52606201171875">
                <font>
@@ -42,7 +43,7 @@
             <Label layoutX="39.0" layoutY="246.0" text="State" />
             <Label layoutX="41.0" layoutY="291.0" text="Zip code" />
             <Label layoutX="43.0" layoutY="202.0" text="City" />
-            <ComboBox fx:id="locationName" layoutX="187.0" layoutY="152.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="151.0" promptText="location" />
+            <ComboBox fx:id="locationName" layoutX="187.0" layoutY="151.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="151.0" promptText="location" />
             <CheckBox fx:id="flagged" contentDisplay="GRAPHIC_ONLY" layoutX="131.0" layoutY="333.0" mnemonicParsing="false" text="Flagged?" />
             <Label layoutX="41.0" layoutY="333.0" text="Flagged?" />
             <Label layoutX="41.0" layoutY="367.0" text="Date Flagged" />
@@ -65,6 +66,8 @@
                   <TableColumn prefWidth="103.0" text="Date Flagged" />
               </columns>
             </TableView>
+            <ButtonBar layoutX="239.0" layoutY="590.0" prefHeight="40.0" prefWidth="88.0" />
+          <Button fx:id="back" layoutX="160.0" layoutY="590.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="31.0" prefWidth="92.0" text="Back" />
          </children>
       </AnchorPane>
    </children>
