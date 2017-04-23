@@ -156,11 +156,10 @@ public class RegisterController {
 
         //ADD CODE WHICH QUEIRES AND GETS ALL THE STATES
         Statement stmt = null;
-        String query = "SELECT State FROM CITY_STATE";
+        String query = "SELECT DISTINCT State FROM CITY_STATE";
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
-                System.out.println("YO ZACL");
                 selectState.getItems().add(result.getString("State"));
             }
         } catch (SQLException e) {
@@ -189,12 +188,13 @@ public class RegisterController {
         System.out.println(selectState.getValue());
         String state = selectState.getValue().toString();
         Statement stmt = null;
+        selectCity.getItems().removeAll(selectCity.getItems());
         String query = "SELECT City FROM CITY_STATE WHERE State = '" +
                 state + "'";
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
-                selectState.getItems().add(result.getString("State"));
+                selectCity.getItems().add(result.getString("City"));
             }
         } catch (SQLException e) {
             System.out.println(e);
