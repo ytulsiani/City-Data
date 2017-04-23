@@ -84,7 +84,7 @@ public class RegisterController {
 
     private void createNewUser(String username, String email, String password, String userType) throws SQLException {
         Statement stmt = null;
-        String update = String.format("INSERT INTO USER (EmailAddress, Username, Password, User_Type) VALUES (%s, %s, %s, %s, %s)"
+        String update = String.format("INSERT INTO USER (EmailAddress, Username, Password, UserType) VALUES ('%s', '%s', '%s', '%s')"
                 , email, username, password, userType);
         try {
             DBConnection.connectAndUpdate(stmt, update);
@@ -99,7 +99,7 @@ public class RegisterController {
 
     private void createCityOfficial(String username, String email, String state, String city, String title) throws SQLException {
         Statement stmt = null;
-        String update = String.format("INSERT INTO CITY_OFFICIAL (EmailAddress, Username, Title, City, State) VALUES (%s, %s, %s, %s, %s)"
+        String update = String.format("INSERT INTO CITY_OFFICIAL (EmailAddress, Username, Title, City, State) VALUES ('%s', '%s', '%s', '%s', '%s')"
                 , email, username, title, city, state);
         try {
             DBConnection.connectAndUpdate(stmt, update);
