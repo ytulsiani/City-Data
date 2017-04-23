@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="652.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FilterPOIController">
+<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="652.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FilterPOIController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -31,31 +31,31 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="400.0" GridPane.rowIndex="2">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="754.0" prefWidth="400.0" GridPane.rowIndex="2">
          <children>
-            <Text layoutX="88.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View POIs" textAlignment="CENTER" underline="true" wrappingWidth="228.52606201171875">
+            <Text layoutX="99.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View POIs" textAlignment="CENTER" underline="true" wrappingWidth="228.52606201171875">
                <font>
-                  <Font name="System Bold" size="17.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Label layoutX="41.0" layoutY="161.0" text="POI location name" />
-            <Label layoutX="39.0" layoutY="246.0" text="State" />
-            <Label layoutX="41.0" layoutY="291.0" text="Zip code" />
-            <Label layoutX="43.0" layoutY="202.0" text="City" />
-            <ComboBox fx:id="locationName" layoutX="187.0" layoutY="152.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#locationSelected" prefHeight="35.0" prefWidth="151.0" promptText="location" />
-            <CheckBox fx:id="flagged" contentDisplay="GRAPHIC_ONLY" layoutX="131.0" layoutY="333.0" mnemonicParsing="false" text="Flagged?" />
-            <Label layoutX="41.0" layoutY="333.0" text="Flagged?" />
-            <Label layoutX="41.0" layoutY="367.0" text="Date Flagged" />
-            <DatePicker fx:id="date1" layoutX="121.0" layoutY="362.0" prefHeight="27.0" prefWidth="119.0" promptText=" /  /" />
-            <DatePicker fx:id="date2" layoutX="281.0" layoutY="362.0" prefHeight="27.0" prefWidth="119.0" promptText=" /  /" />
-            <Label layoutX="250.0" layoutY="367.0" text="to" />
-            <Button fx:id="applyFilter" layoutX="156.0" layoutY="413.0" mnemonicParsing="false" onAction="#onApplyFilterClick" text="Apply Filter" />
-            <Button fx:id="resetFilter" layoutX="263.0" layoutY="413.0" mnemonicParsing="false" onAction="#onResetFilterClick" text="Reset Filter" />
-            <ComboBox fx:id="city" layoutX="187.0" layoutY="193.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#citySelected" prefHeight="35.0" prefWidth="151.0" promptText="city" />
-            <ComboBox fx:id="state" layoutX="187.0" layoutY="237.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#stateSelected" prefHeight="35.0" prefWidth="151.0" promptText="state" />
-            <TextField fx:id="zipCode" layoutX="190.0" layoutY="286.0" prefHeight="27.0" prefWidth="88.0" />
-            <Line endX="180.0" layoutX="200.0" layoutY="450.0" startX="-180.0" />
-            <TableView fx:id="table" layoutX="-66.0" layoutY="463.0" prefHeight="89.0" prefWidth="542.0">
+            <Label layoutX="41.0" layoutY="145.0" text="POI location name" />
+            <Label layoutX="39.0" layoutY="230.0" text="State" />
+            <Label layoutX="41.0" layoutY="275.0" text="Zip code" />
+            <Label layoutX="43.0" layoutY="186.0" text="City" />
+            <ComboBox fx:id="locationName" layoutX="187.0" layoutY="136.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#locationSelected" prefHeight="35.0" prefWidth="151.0" promptText="location" />
+            <CheckBox fx:id="flagged" contentDisplay="GRAPHIC_ONLY" layoutX="131.0" layoutY="317.0" mnemonicParsing="false" text="Flagged?" />
+            <Label layoutX="41.0" layoutY="317.0" text="Flagged?" />
+            <Label layoutX="41.0" layoutY="351.0" text="Date Flagged" />
+            <DatePicker fx:id="date1" layoutX="141.0" layoutY="346.0" prefHeight="27.0" prefWidth="119.0" promptText=" /  /" />
+            <DatePicker fx:id="date2" layoutX="313.0" layoutY="346.0" prefHeight="27.0" prefWidth="119.0" promptText=" /  /" />
+            <Label layoutX="283.0" layoutY="351.0" text="to" />
+            <Button fx:id="applyFilter" layoutX="156.0" layoutY="392.0" mnemonicParsing="false" onAction="#onApplyFilterClick" text="Apply Filter" />
+            <Button fx:id="resetFilter" layoutX="263.0" layoutY="392.0" mnemonicParsing="false" onAction="#onResetFilterClick" text="Reset Filter" />
+            <ComboBox fx:id="city" layoutX="187.0" layoutY="177.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#citySelected" prefHeight="35.0" prefWidth="151.0" promptText="city" />
+            <ComboBox fx:id="state" layoutX="187.0" layoutY="221.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#stateSelected" prefHeight="35.0" prefWidth="151.0" promptText="state" />
+            <TextField fx:id="zipCode" layoutX="190.0" layoutY="270.0" prefHeight="27.0" prefWidth="88.0" />
+            <Line endX="180.0" layoutX="200.0" layoutY="437.0" startX="-180.0" />
+            <TableView fx:id="table" layoutX="-66.0" layoutY="448.0" prefHeight="162.0" prefWidth="542.0">
               <columns>
                 <TableColumn prefWidth="129.0" text="Location Name" />
                 <TableColumn prefWidth="105.0" text="City" />
@@ -65,7 +65,7 @@
                   <TableColumn prefWidth="103.0" text="Date Flagged" />
               </columns>
             </TableView>
-          <Button fx:id="back" layoutX="160.0" layoutY="590.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="31.0" prefWidth="92.0" text="Back" />
+          <Button fx:id="back" layoutX="160.0" layoutY="622.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="31.0" prefWidth="92.0" text="Back" />
          </children>
       </AnchorPane>
    </children>
