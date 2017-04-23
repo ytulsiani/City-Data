@@ -132,12 +132,27 @@ public class RegisterController {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException{
         comboBox.getItems().removeAll(comboBox.getItems());
         comboBox.getItems().addAll("City Scientist", "City Official");
         comboBox.getSelectionModel().select("City Scientist");
 
         //ADD CODE WHICH QUEIRES AND GETS ALL THE STATES
+        Statement stmt = null;
+        String query = "SELECT State FROM CITY_STATE";
+        try {
+            ResultSet result = DBConnection.connectAndQuery(stmt, query);
+            while (result.next()) {
+                selectState.getItems().add(result.getString("State"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+
         //selectState.getSelectionModel().select("sdlfsjdf");
 
 
