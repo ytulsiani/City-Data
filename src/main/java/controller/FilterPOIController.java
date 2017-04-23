@@ -52,18 +52,18 @@ public class FilterPOIController {
         Object stateBox = state.getSelectionModel().getSelectedItem();
         Object cityBox = city.getSelectionModel().getSelectedItem();
         ObservableList<ArrayList<String>> data = FXCollections.<ArrayList<String>>observableArrayList();
-//        if(flagged.isSelected()) {
-//            query += "'Flag' = true ";
-//        } else {
-//            query += "('Flag' = false OR 'Flag' = NULL) ";
-//        }
+        if(flagged.isSelected()) {
+            query += "Flag = TRUE ";
+        } else {
+            query += "(Flag IS NULL OR Flag = FALSE)";
+        }
 
         if (locationBox != null) {
-            query += "LocationName = '" + locationName.getValue().toString() + "' ";
+            query += "AND LocationName = '" + locationName.getValue().toString() + "' ";
         } if (cityBox != null) {
             query += "AND City = '" + city.getValue().toString() + "' ";
         } if (stateBox != null){
-            query += "State = '" + state.getValue().toString() + "' ";
+            query += "AND State = '" + state.getValue().toString() + "' ";
         }  if (!zipCode.getText().equals("")) {
             query += "AND ZipCode = '" + zipCode.getText() + "' ";
         } if (date1.getValue() != null) {
@@ -76,7 +76,6 @@ public class FilterPOIController {
             System.out.println(query);
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
-                System.out.println("IN LIOOOOOOPP");
                 ArrayList<String> data1 = new ArrayList<String>();
                 data1.add(result.getString("LocationName"));
                 data1.add(result.getString("City"));
@@ -84,9 +83,9 @@ public class FilterPOIController {
                 data1.add(result.getString("ZipCode"));
                 data1.add(result.getString("Flag"));
                 data1.add(result.getString("DateFlagged"));
-                System.out.println(data1);
                 data.add(data1);
             }
+            System.out.println(data);
         } catch (SQLException e) {
             System.out.println(e);
         } finally {
@@ -95,6 +94,7 @@ public class FilterPOIController {
                 stmt.close();
             }
         }
+
 
     }
 
