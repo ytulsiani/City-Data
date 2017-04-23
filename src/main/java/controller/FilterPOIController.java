@@ -53,9 +53,9 @@ public class FilterPOIController {
         Object cityBox = city.getSelectionModel().getSelectedItem();
         ObservableList<ArrayList<String>> data = FXCollections.<ArrayList<String>>observableArrayList();
         if(flagged.isSelected()) {
-            query += "Flag = 'true' ";
+            query += "Flag = true ";
         } else {
-            query += "Flag = 'false' OR Flag = 'NULL' ";
+            query += "(Flag = false OR Flag = NULL) ";
         }
 
         if (locationBox != null) {
@@ -76,6 +76,7 @@ public class FilterPOIController {
             System.out.println(query);
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
+                System.out.println("IN LIOOOOOOPP");
                 ArrayList<String> data1 = new ArrayList<String>();
                 data1.add(result.getString("LocationName"));
                 data1.add(result.getString("City"));

@@ -55,11 +55,11 @@
             <ComboBox fx:id="state" layoutX="187.0" layoutY="237.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#stateSelected" prefHeight="35.0" prefWidth="151.0" promptText="state" />
             <TextField fx:id="zip" layoutX="190.0" layoutY="286.0" prefHeight="27.0" prefWidth="88.0" />
             <Line endX="180.0" layoutX="200.0" layoutY="450.0" startX="-180.0" />
-            <TableView layoutX="-66.0" layoutY="463.0" prefHeight="89.0" prefWidth="542.0">
+            <TableView fx:id="table" layoutX="-66.0" layoutY="463.0" prefHeight="89.0" prefWidth="542.0">
               <columns>
                 <TableColumn prefWidth="129.0" text="Location Name" />
                 <TableColumn prefWidth="105.0" text="City" />
-                  <TableColumn fx:id="poiTable" prefWidth="53.0" text="State" />
+                  <TableColumn prefWidth="53.0" text="State" />
                   <TableColumn prefWidth="77.0" text="Zip code" />
                   <TableColumn prefWidth="69.0" text="Flagged?" />
                   <TableColumn prefWidth="103.0" text="Date Flagged" />
