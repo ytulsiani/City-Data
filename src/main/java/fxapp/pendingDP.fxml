@@ -34,7 +34,7 @@
             </Text>
             <Button fx:id="back" layoutX="10.0" layoutY="504.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
             <Button fx:id="reject" layoutX="184.0" layoutY="504.0" mnemonicParsing="false" onAction="#onRejectClick" text="Reject" />
-            <Button fx:id="accept" layoutX="353.0" layoutY="504.0" mnemonicParsing="false" onAction="#onAcceptFilter" text="Accept" />
+            <Button fx:id="accept" layoutX="353.0" layoutY="504.0" mnemonicParsing="false" onAction="#onAcceptClick" text="Accept" />
             <TableView fx:id="pendingDPTable" layoutX="-104.0" layoutY="180.0" prefHeight="89.0" prefWidth="619.0">
               <columns>
                 <TableColumn prefWidth="81.0" text="Select" />

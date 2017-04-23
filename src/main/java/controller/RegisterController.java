@@ -182,7 +182,7 @@ public class RegisterController {
 //            //main.setMainScene(UserType.)
 //        }
 //    }
-//    @FXML
+    @FXML
     public void switchBoxState() {
         //ADD CODE WHICH ADDS ALL CITIES WITHIN A STATE W/ SQL
         System.out.println(selectState.getValue());
