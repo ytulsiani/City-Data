@@ -45,14 +45,14 @@ public class FilterPOIController {
         Object locationBox = locationName.getSelectionModel().getSelectedItem();
         Object stateBox = state.getSelectionModel().getSelectedItem();
         Object cityBox = city.getSelectionModel().getSelectedItem();
-
+/*
         if (locationBox != null) {
             query += "LocationName = '" + locationName + "'";
         } else if (city == null) {
             System.out.println("Please select a city!");
         } else if (title ""){
             System.out.println("Please set a title!");
-        }
+        }*/
     }
 
     @FXML
