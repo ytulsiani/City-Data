@@ -36,9 +36,11 @@ public class AddDPController {
 
     @FXML
     public void onBackClick() {
+        main.setMainScene(MainFXApp.userType, MainFXApp.user);
     }
 
     @FXML
     public void onSubmitClick() {
     }
+
 }
