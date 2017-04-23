@@ -35,6 +35,8 @@ public class RegisterController {
     @FXML
     private ComboBox selectCity;
     @FXML
+    private TextField titleField;
+    @FXML
     private Text errorText;
 
     public void register(MainFXApp main) {
@@ -53,18 +55,49 @@ public class RegisterController {
         String userType = "";
         if (comboBox.getValue() == "City Scientist") {
             userType = "City Scientist";
+            createCityScientist(usernameField.getText(), emailField.getText(), passwordField.getText(), userType);
         } else {
             userType = "City Official";
-
+            Object state = selectState.getSelectionModel().getSelectedItem();
+            Object city = selectCity.getSelectionModel().getSelectedItem();
+            String title = titleField.getText();
+            if (state == null) {
+                System.out.println("Please select a state!");
+            } else if (city == null) {
+                System.out.println("Please select a city!");
+            } else if (title == "") {
+                System.out.println("Please set a title!");
+            }
+            createCityOfficial(usernameField.getText(), emailField.getText(), passwordField.getText(), state.toString(), city.toString(), title.toString(), userType);
         }
 
         //Put user in database
-        //main.setLoginScene();
+        main.setLoginScene();
+    }
+
+    private void createCityScientist(String username, String email, String password, String userType) throws SQLException {
+        Statement stmt = null;
+        String update = String.format("INSERT INTO USER (EmailAddress, Username, Password, User_Type) VALUES (%s, %s, %s, %s, %s)"
+                , email, username, password, userType);
+        try {
+            DBConnection.connectAndUpdate(stmt, update);
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+    }
+
+    private void createCityOfficial(String username, String email, String password, String state,
+                                    String city, String title, String userType) throws SQLException {
+
     }
 
     private boolean checkUNUnique(String username) throws SQLException{
         Statement stmt = null;
-        String query = "SELECT Username FROM USER WHERE Username = '" + username + "'";
+        String update = String.format();
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
@@ -103,7 +136,10 @@ public class RegisterController {
         comboBox.getItems().removeAll(comboBox.getItems());
         comboBox.getItems().addAll("City Scientist", "City Official");
         comboBox.getSelectionModel().select("City Scientist");
+
         //ADD CODE WHICH QUEIRES AND GETS ALL THE STATES
+        //selectState.getSelectionModel().select("sdlfsjdf");
+
 
     }
    // @FXML
