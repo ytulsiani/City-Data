@@ -43,7 +43,7 @@ public class LoginController {
                 System.out.println("HELOOO");
                 System.out.println(result.getString("Username"));
                 System.out.println("(OEUO(UEWURW(GUORW(BUOG" + result.getString("UserType"));
-                main.setMainScene(result.getString("UserType"));
+                main.setMainScene(result.getString("UserType"), result.getString("Username"));
             }
         } catch (SQLException e) {
             System.out.println(e);

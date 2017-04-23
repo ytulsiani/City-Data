@@ -11,6 +11,10 @@ public class MainFXApp extends Application {
 
     private Stage stage;
 
+    public static String userType;
+    public static String user;
+
+
     private Scene loginScene;
     private Scene registerScene;
     private Scene mainScene;
@@ -59,9 +63,11 @@ public class MainFXApp extends Application {
         setScene(registerScene, "Register");
     }
 
-    public void setMainScene(String userType) {
+    public void setMainScene(String userType, String user) {
         setScene(mainScene, "SLS Point of Interest Tool");
         mainController.setUser(userType);
+        this.userType = userType;
+        this.user = user;
     }
     public void setAddDPScene() {
         setScene(addDPScene, "Add Datapoint");
