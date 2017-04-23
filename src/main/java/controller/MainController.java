@@ -62,15 +62,15 @@ public class MainController {
     }
     @FXML
     public void onPOIReport() {
-
+        main.setPOIReportScene();
     }
     @FXML
     public void onPendingDP() {
-
+        main.setPendingDPScene();
     }
     @FXML
     public void onPendingCity() {
-
+        main.setPendingCOScene();
     }
 
 }
