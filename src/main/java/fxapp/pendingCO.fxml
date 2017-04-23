@@ -32,10 +32,10 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button fx:id="applyFilter" layoutX="10.0" layoutY="504.0" mnemonicParsing="false" text="Back" />
-            <Button fx:id="resetFilter" layoutX="184.0" layoutY="504.0" mnemonicParsing="false" text="Reject" />
-            <Button fx:id="resetFilter1" layoutX="353.0" layoutY="504.0" mnemonicParsing="false" text="Accept" />
-            <TableView layoutX="-102.0" layoutY="178.0" prefHeight="89.0" prefWidth="608.0">
+            <Button fx:id="back" layoutX="10.0" layoutY="504.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
+            <Button fx:id="reject" layoutX="184.0" layoutY="504.0" mnemonicParsing="false" onAction="#onRejectClick" text="Reject" />
+            <Button fx:id="accept" layoutX="353.0" layoutY="504.0" mnemonicParsing="false" onAction="#onAcceptClick" text="Accept" />
+            <TableView fx:id="pendingCOTable" layoutX="-102.0" layoutY="178.0" prefHeight="89.0" prefWidth="608.0">
               <columns>
                 <TableColumn prefWidth="81.0" text="Select" />
                 <TableColumn prefWidth="109.0" text="Username" />
