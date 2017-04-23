@@ -31,6 +31,7 @@ public class AddLocationController {
 
     @FXML
     public void onBackClick() {
+        main.setMainScene(MainFXApp.userType, MainFXApp.user);
     }
 
     @FXML
