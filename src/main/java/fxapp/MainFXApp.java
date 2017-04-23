@@ -144,8 +144,8 @@ public class MainFXApp extends Application {
         pendingDPController.register(this);
         pendingCOController = pendingCOLoader.getController();
         pendingCOController.register(this);
-        //set opening scene
 
+        //set opening scene
         setLoginScene();
     }
 

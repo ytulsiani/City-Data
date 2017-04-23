@@ -27,8 +27,6 @@ public class RegisterController {
     @FXML
     private TextField emailField;
     @FXML
-    private Text message;
-    @FXML
     private ComboBox comboBox;
     @FXML
     private ComboBox selectState;
@@ -186,7 +184,7 @@ public class RegisterController {
     @FXML
     public void switchBoxState() throws SQLException{
         //ADD CODE WHICH ADDS ALL CITIES WITHIN A STATE W/ SQL
-        System.out.println(selectState.getValue());
+        //System.out.println(selectState.getValue());
         String state = selectState.getValue().toString();
         Statement stmt = null;
         selectCity.getItems().removeAll(selectCity.getItems());

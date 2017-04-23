@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="473.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddLocationController">
+<GridPane alignment="center" hgap="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="473.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddLocationController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -38,13 +38,13 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Text layoutX="47.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" textAlignment="CENTER" wrappingWidth="66.9999983087182">
+            <Text layoutX="47.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State" textAlignment="CENTER" wrappingWidth="66.9999983087182">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <ComboBox fx:id="city" layoutX="120.0" layoutY="90.0" prefWidth="150.0" />
-            <Text layoutX="40.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State" textAlignment="CENTER" wrappingWidth="77.50000432506204">
+            <ComboBox fx:id="selectState" layoutX="120.0" layoutY="90.0" onAction="#onStateSwitch" prefWidth="150.0" />
+            <Text layoutX="40.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" textAlignment="CENTER" wrappingWidth="77.50000432506204">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -58,7 +58,7 @@
             <Button fx:id="back" layoutX="87.0" layoutY="227.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
             <Button fx:id="submit" layoutX="209.0" layoutY="228.0" mnemonicParsing="false" onAction="#onSubmitClick" text="Submit" />
             <TextField fx:id="poiLocationName" layoutX="122.0" layoutY="46.0" prefHeight="31.0" prefWidth="228.0" />
-            <ComboBox fx:id="state" layoutX="120.0" layoutY="134.0" prefWidth="150.0" />
+            <ComboBox fx:id="selectCity" layoutX="120.0" layoutY="134.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </children>
