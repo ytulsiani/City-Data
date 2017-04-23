@@ -57,12 +57,12 @@
             <Line endX="180.0" layoutX="200.0" layoutY="450.0" startX="-180.0" />
             <TableView fx:id="table" layoutX="-66.0" layoutY="463.0" prefHeight="89.0" prefWidth="542.0">
               <columns>
-                <TableColumn prefWidth="129.0" text="Location Name" />
-                <TableColumn prefWidth="105.0" text="City" />
-                  <TableColumn prefWidth="53.0" text="State" />
-                  <TableColumn prefWidth="77.0" text="Zip code" />
-                  <TableColumn prefWidth="69.0" text="Flagged?" />
-                  <TableColumn prefWidth="103.0" text="Date Flagged" />
+                <TableColumn fx:id="locationCol" prefWidth="129.0" text="Location Name" />
+                <TableColumn fx:id="cityCol" prefWidth="105.0" text="City" />
+                  <TableColumn fx:id="stateCol" prefWidth="53.0" text="State" />
+                  <TableColumn fx:id="zipCol" prefWidth="77.0" text="Zip code" />
+                  <TableColumn fx:id="flaggedCol" prefWidth="69.0" text="Flagged?" />
+                  <TableColumn fx:id="dateCol" prefWidth="103.0" text="Date Flagged" />
               </columns>
             </TableView>
           <Button fx:id="back" layoutX="160.0" layoutY="590.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="31.0" prefWidth="92.0" text="Back" />

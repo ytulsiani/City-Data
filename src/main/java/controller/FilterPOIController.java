@@ -2,16 +2,24 @@ package controller;
 
 import fxapp.DBConnection;
 import fxapp.MainFXApp;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import fxapp.POI;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 /**
  * Created by Yash on 4/23/2017.
@@ -44,6 +52,18 @@ public class FilterPOIController {
     private Button back;
     @FXML
     private TableView table;
+    @FXML
+    private TableColumn<POI, String> locationCol;
+    @FXML
+    private TableColumn<POI, String> cityCol;
+    @FXML
+    private TableColumn<POI, String> stateCol;
+    @FXML
+    private TableColumn<POI, String> zipCol;
+    @FXML
+    private TableColumn<POI, String> flaggedCol;
+    @FXML
+    private TableColumn<POI, String> dateCol;
 
     @FXML
     public void onApplyFilterClick() throws SQLException {
@@ -51,11 +71,11 @@ public class FilterPOIController {
         Object locationBox = locationName.getSelectionModel().getSelectedItem();
         Object stateBox = state.getSelectionModel().getSelectedItem();
         Object cityBox = city.getSelectionModel().getSelectedItem();
-        ObservableList<ArrayList<String>> data = FXCollections.<ArrayList<String>>observableArrayList();
+        ObservableList<POI> data = FXCollections.observableArrayList();
         if(flagged.isSelected()) {
             query += "Flag = TRUE ";
         } else {
-            query += "(Flag IS NULL OR Flag = FALSE)";
+            query += "(Flag IS NULL OR Flag = FALSE) ";
         }
 
         if (locationBox != null) {
@@ -76,26 +96,54 @@ public class FilterPOIController {
             System.out.println(query);
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
-                ArrayList<String> data1 = new ArrayList<String>();
-                data1.add(result.getString("LocationName"));
-                data1.add(result.getString("City"));
-                data1.add(result.getString("State"));
-                data1.add(result.getString("ZipCode"));
-                data1.add(result.getString("Flag"));
-                data1.add(result.getString("DateFlagged"));
-                data.add(data1);
+                //ArrayList<String> data1 = new ArrayList<String>();
+                POI poi = new POI(result.getString("LocationName"), result.getString("City"), result.getString("State"),
+                        result.getString("ZipCode"), result.getString("Flag"), result.getString("DateFlagged"));
+                data.add(poi);
             }
-            System.out.println(data);
         } catch (SQLException e) {
             System.out.println(e);
         } finally {
-            table.setItems(data);
+
             if (stmt != null) {
                 stmt.close();
             }
         }
 
+        locationCol.setCellValueFactory(cellData -> cellData.getValue().getLocation());
+        cityCol.setCellValueFactory(new PropertyValueFactory<ArrayList<String>, String>("city"));
+        stateCol.setCellValueFactory(new PropertyValueFactory<ArrayList<String>, String>("state"));
+        zipCol.setCellValueFactory(new PropertyValueFactory<ArrayList<String>, String>("zip"));
+        flaggedCol.setCellValueFactory(new PropertyValueFactory<ArrayList<String>, String>("flagged"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<ArrayList<String>, String>("date"));
+//
+//        locationCol.setCellFactory(new Callback<TableColumn.CellDataFeatures<ArrayList<String>, String>, ObservableValue<String>>() {
+//            @Override
+//            public ObservableValue<String> call(TableColumn.CellDataFeatures<ArrayList<String>, String> p) {
+//                //return new SimpleStringProperty("test");
+//                return null;
+//            }
+//        });
 
+        //table.getColumns().addAll(locationCol, cityCol, stateCol, zipCol, flaggedCol, dateCol);
+//        for (Object c : table.getColumns()) {
+//            TableColumn d = (TableColumn) c;
+//            d.setCellFactory(new Callback<TableColumn, TableCell>() {
+//                @Override
+//                public TableCell call(TableColumn param) {
+//                    return null;
+//                }
+//            });
+//        }
+
+        table.setItems(data);
+        //OBSERVABLE LIST
+        //locationCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ArrayList<String>, String>, ObservableValue<String>>());
+
+
+
+        //table.getItems().add();
+        //table.getItems().add("blah");
     }
 
     @FXML
