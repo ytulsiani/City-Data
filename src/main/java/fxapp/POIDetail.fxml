@@ -39,26 +39,26 @@
             </Text>
             <Label layoutX="41.0" layoutY="97.0" text="Type" />
             <Label layoutX="42.0" layoutY="154.0" text="Data Value" />
-            <ComboBox fx:id="locationName" layoutX="153.0" layoutY="90.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="151.0" promptText="Type" />
+            <ComboBox fx:id="type" layoutX="153.0" layoutY="90.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="151.0" promptText="Type" />
             <Label layoutX="41.0" layoutY="205.0" text="Time &amp; Date" />
             <DatePicker fx:id="date1" layoutX="136.0" layoutY="201.0" prefHeight="27.0" prefWidth="69.0" promptText=" /  /" />
             <DatePicker fx:id="date2" layoutX="248.0" layoutY="201.0" prefHeight="27.0" prefWidth="69.0" promptText=" /  /" />
             <Label layoutX="217.0" layoutY="205.0" text="to" />
-            <Button fx:id="applyFilter" layoutX="225.0" layoutY="265.0" mnemonicParsing="false" text="Apply Filter" />
-            <Button fx:id="resetFilter" layoutX="340.0" layoutY="265.0" mnemonicParsing="false" text="Reset Filter" />
+            <Button fx:id="applyFilter" layoutX="225.0" layoutY="265.0" mnemonicParsing="false" onAction="#onApplyFilterClick" text="Apply Filter" />
+            <Button fx:id="resetFilter" layoutX="340.0" layoutY="265.0" mnemonicParsing="false" onAction="#onResetFilterClick" text="Reset Filter" />
             <Line endX="180.0" layoutX="200.0" layoutY="322.0" startX="-180.0" />
-            <TableView layoutX="-41.0" layoutY="351.0" prefHeight="89.0" prefWidth="494.0">
+            <TableView fx:id="poiDetailTable" layoutX="-41.0" layoutY="351.0" prefHeight="89.0" prefWidth="494.0">
               <columns>
                 <TableColumn prefWidth="129.0" text="Data Type" />
                 <TableColumn prefWidth="105.0" text="Data Value" />
                   <TableColumn prefWidth="257.0" text="Time &amp; Date of Data Reading" />
               </columns>
             </TableView>
-            <TextField layoutX="155.0" layoutY="151.0" prefHeight="31.0" prefWidth="44.0" />
-            <TextField layoutX="250.0" layoutY="151.0" prefHeight="31.0" prefWidth="44.0" />
+            <TextField fx:id="dataValue1" layoutX="155.0" layoutY="151.0" prefHeight="31.0" prefWidth="44.0" />
+            <TextField fx:id="dataValue2" layoutX="250.0" layoutY="151.0" prefHeight="31.0" prefWidth="44.0" />
             <Label layoutX="215.0" layoutY="157.0" text="to" />
-            <Button layoutX="93.0" layoutY="589.0" mnemonicParsing="false" text="Back" />
-            <Button layoutX="250.0" layoutY="589.0" mnemonicParsing="false" text="Flag" />
+            <Button fx:id="back" layoutX="93.0" layoutY="589.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
+            <Button fx:id="flag" layoutX="250.0" layoutY="589.0" mnemonicParsing="false" onAction="#onFlagClick" text="Flag" />
          </children>
       </AnchorPane>
    </children>
