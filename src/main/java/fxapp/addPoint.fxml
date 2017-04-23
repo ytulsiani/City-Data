@@ -42,7 +42,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <DatePicker fx:id="dateReading" layoutX="122.0" layoutY="66.0" prefHeight="16.0" prefWidth="121.0" />
+            <DatePicker fx:id="dateReading" layoutX="122.0" layoutY="66.0" prefHeight="31.0" prefWidth="192.0" />
             <Text layoutX="-10.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date of data reading" textAlignment="CENTER" wrappingWidth="133.50000432506204">
                <font>
                   <Font name="System Bold" size="12.0" />
