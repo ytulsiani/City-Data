@@ -45,10 +45,16 @@ public class RegisterController {
 
     @FXML
     public void onRegisterPressed() throws SQLException {
-        if (checkUNUnique(usernameField.getText()) == false) {
+        if (usernameField.getText().equals("")) {
+            errorText.setText("Please enter a username.");
+        } else if (checkUNUnique(usernameField.getText()) == false) {
             errorText.setText("An account with that username already exists!");
+        } else if (emailField.getText().equals("")) {
+            errorText.setText("Please enter an email.");
         } else if (checkEmailUnique(emailField.getText()) == false) {
             errorText.setText("An account with that email address already exists!");
+        } else if (passwordField.getText().equals("")) {
+            errorText.setText("Please enter a password.");
         } else if (!passwordField.getText().equals(confirmPasswordField.getText())){
             errorText.setText("Passwords do not match!");
         } else {
@@ -63,11 +69,11 @@ public class RegisterController {
                 Object city = selectCity.getSelectionModel().getSelectedItem();
                 String title = titleField.getText();
                 if (state == null) {
-                    System.out.println("Please select a state!");
+                    errorText.setText("Please select a state!");
                 } else if (city == null) {
-                    System.out.println("Please select a city!");
-                } else if (title == "") {
-                    System.out.println("Please set a title!");
+                    errorText.setText("Please select a city!");
+                } else if (title.equals("")) {
+                    errorText.setText("Please enter a title!");
                 } else {
                     createNewUser(usernameField.getText(), emailField.getText(), passwordField.getText(), userType);
                     createCityOfficial(usernameField.getText(), emailField.getText(), state.toString(), city.toString(), title);
@@ -75,11 +81,6 @@ public class RegisterController {
                 }
             }
         }
-
-
-
-        //Put user in database
-        //main.setLoginScene();
     }
 
     private void createNewUser(String username, String email, String password, String userType) throws SQLException {
