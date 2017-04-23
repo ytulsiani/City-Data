@@ -106,16 +106,16 @@ public class RegisterController {
         //ADD CODE WHICH QUEIRES AND GETS ALL THE STATES
 
     }
-    @FXML
-    public void switchBox() {
-        if (comboBox.getValue() == "City Official") {
-            //main.setMainScene(UserType.CITY_OFFICIAL);
-
-        } else if (comboBox.getValue() == "City Scientist") {
-            //main.setMainScene(UserType.)
-        }
-    }
-    @FXML
+   // @FXML
+//    public void switchBox() {
+//        if (comboBox.getValue() == "City Official") {
+//            //main.setMainScene(UserType.CITY_OFFICIAL);
+//
+//        } else if (comboBox.getValue() == "City Scientist") {
+//            //main.setMainScene(UserType.)
+//        }
+//    }
+//    @FXML
     public void switchBoxState() {
         //ADD CODE WHICH ADDS ALL CITIES WITHIN A STATE W/ SQL
         System.out.println(selectState.getValue());

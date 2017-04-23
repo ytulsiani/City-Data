@@ -54,11 +54,11 @@ public class MainController {
     }
     @FXML
     public void onAddLocation() {
-
+        main.setAddLocationScene();
     }
     @FXML
     public void onFilterPOI() {
-
+        main.setFilterPOIScene();
     }
     @FXML
     public void onPOIReport() {
