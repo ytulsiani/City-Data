@@ -39,8 +39,8 @@ public class AddDPController {
     private Button back;
     @FXML
     private Button submit;
-    @FXML
-    private Text errorText;
+//    @FXML
+//    private Text errorText;
 
     @FXML
     public void onAddLocationClick() {
@@ -55,15 +55,15 @@ public class AddDPController {
     @FXML
     public void onSubmitClick() throws SQLException {
         if (poiLocationName.getValue() == null) {
-            errorText.setText("Please enter a location name.");
-        } else if (dateReading.getValue().equals("")) {
-            errorText.setText("Please enter a date for data reading");
-        } else if ((timeReading1.getValue().equals("")) || (timeReading2.getValue().equals(""))) {
-            errorText.setText("Please enter time of data reading");
-        } else if (dataType.getValue().equals("")) {
-            errorText.setText("Please enter a data type.");
+            System.out.println("Please enter a location name.");
+        } else if (dateReading.getValue() == null) {
+            System.out.println("Please enter a date for data reading");
+        } else if ((timeReading1.getValue() == null) || (timeReading2.getValue() == null)) {
+            System.out.println("Please enter time of data reading");
+        } else if (dataType.getValue() == null) {
+            System.out.println("Please enter a data type.");
         } else if (dataValue.getText().equals("")) {
-            errorText.setText("Please enter a data value.");
+            System.out.println("Please enter a data value.");
         } else {
             String locationName = poiLocationName.getValue().toString();
             String dateTime = dateReading.getValue() + " " + timeReading1.getValue() + ":" + timeReading2.getValue();
@@ -72,10 +72,9 @@ public class AddDPController {
             System.out.println(locationName + " " + dateTime + " " + type + " " + value);
 
             addDP(locationName, dateTime, type, value);
-            main.setLoginScene();
+            main.setMainScene(MainFXApp.userType, MainFXApp.user);
 
         }
-
 
     }
 
