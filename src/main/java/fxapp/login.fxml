@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<GridPane alignment="center" hgap="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -23,7 +23,7 @@
    <children>
     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0">
          <children>
-            <TextField fx:id="usernameField" layoutX="14.0" layoutY="89.0" />
+            <TextField fx:id="usernameField" layoutX="15.0" layoutY="89.0" />
             <Button fx:id="button" layoutX="16.0" layoutY="197.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onLoginPressed" prefHeight="40.0" prefWidth="80.0" text="Login" />
             <Label layoutX="14.0" layoutY="63.0" text="Username" />
             <Label layoutX="16.0" layoutY="124.0" text="Password" />
@@ -38,7 +38,7 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <PasswordField fx:id="passwordField" layoutX="26.0" layoutY="150.0" />
+            <PasswordField fx:id="passwordField" layoutX="15.0" layoutY="150.0" />
          </children>
       </AnchorPane>
    </children>

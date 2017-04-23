@@ -155,7 +155,7 @@ public class RegisterController {
         comboBox.getItems().addAll("City Scientist", "City Official");
         comboBox.getSelectionModel().select("City Scientist");
 
-        //ADD CODE WHICH QUEIRES AND GETS ALL THE STATES
+        //ADD CODE WHICH QUERIES AND GETS ALL THE STATES
         Statement stmt = null;
         String query = "SELECT DISTINCT State FROM CITY_STATE";
         try {
