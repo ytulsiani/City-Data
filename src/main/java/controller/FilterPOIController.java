@@ -258,6 +258,31 @@ public class FilterPOIController {
     public void onBackClick() {
         main.setMainScene(MainFXApp.userType, MainFXApp.user);
     }
-
-    
+    public int datePicker(String date1, String date2) {
+        int year1 = Integer.parseInt(date1.substring(0,4));
+        int year2 = Integer.parseInt(date2.substring(0,4));
+        int month1 = Integer.parseInt(date1.substring(5,7));
+        int month2 = Integer.parseInt(date2.substring(5,7));
+        int day1 = Integer.parseInt(date1.substring(8,10));
+        int day2 = Integer.parseInt(date2.substring(8,10));
+        if (year1 == year2) {
+            if (month1 == month2) {
+                if (day1 == day2) {
+                    return 0;
+                } else if (day1 > day2) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            } else if (month1 > month2) {
+                return 1;
+            } else {
+                return -1;
+            }
+        } else if (year1 > year2) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
 }

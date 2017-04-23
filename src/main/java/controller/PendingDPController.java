@@ -1,11 +1,15 @@
 package controller;
 
 import fxapp.DBConnection;
+import fxapp.DataPoint;
 import fxapp.MainFXApp;
+import fxapp.POI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.sql.ResultSet;
@@ -30,6 +34,17 @@ public class PendingDPController {
     private Button reject;
     @FXML
     private Button accept;
+    @FXML
+    private TableColumn<DataPoint, String> selCol;
+    @FXML
+    private TableColumn<DataPoint, String> poiCol;
+    @FXML
+    private TableColumn<DataPoint, String> dataValCol;
+    @FXML
+    private TableColumn<DataPoint, String> dataTypeCol;
+    @FXML
+    private TableColumn<DataPoint, String> dateCol;
+
 
 
     @FXML
@@ -53,20 +68,14 @@ public class PendingDPController {
         Statement stmt = null;
         String query = "SELECT * FROM DATA_POINT WHERE Accepted IS NULL";
         System.out.println("TEST");
-        ObservableList<ArrayList<String>> data = FXCollections.<ArrayList<String>>observableArrayList();
+        ObservableList<DataPoint> data = FXCollections.observableArrayList();
 
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
                 System.out.println("IN LIOOOOOOPP");
-                ArrayList<String> data1 = new ArrayList<String>();
-                data1.add("");
-                data1.add(result.getString("LocationName"));
-                data1.add(result.getString("Type"));
-                data1.add(result.getString("DataValue"));
-                data1.add(result.getString("DateTime"));
-                System.out.println(data1);
-                data.add(data1);
+                data.add(new DataPoint(result.getString("LocationName"), result.getString("Type"),
+                result.getString("DataValue"), result.getString("DateTime")));
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -76,6 +85,11 @@ public class PendingDPController {
                 stmt.close();
             }
         }
+        poiCol.setCellValueFactory(cellData -> cellData.getValue().getLocation());
+        dataValCol.setCellValueFactory(cellData -> cellData.getValue().getDataVal());
+        dataTypeCol.setCellValueFactory(cellData -> cellData.getValue().getDataType());
+        dateCol.setCellValueFactory(cellData -> cellData.getValue().getDateTime());
+
     }
 
 }

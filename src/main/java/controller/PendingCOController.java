@@ -1,12 +1,15 @@
 package controller;
 
+import fxapp.CityOfficial;
 import fxapp.DBConnection;
+import fxapp.DataPoint;
 import fxapp.MainFXApp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.sql.ResultSet;
@@ -31,6 +34,20 @@ public class PendingCOController {
     private Button reject;
     @FXML
     private Button accept;
+    @FXML
+    private TableColumn<CityOfficial, String> selCol;
+    @FXML
+    private TableColumn<CityOfficial, String> usernameCol;
+    @FXML
+    private TableColumn<CityOfficial, String> emailCol;
+    @FXML
+    private TableColumn<CityOfficial, String> cityCol;
+    @FXML
+    private TableColumn<CityOfficial, String> stateCol;
+    @FXML
+    private TableColumn<CityOfficial, String> titleCol;
+    @FXML
+    private TableColumn<CityOfficial, String> dateCol;
 
     @FXML
     public void initalize() {
@@ -52,20 +69,14 @@ public class PendingCOController {
         Statement stmt = null;
         String query = "SELECT * FROM CITY_OFFICIAL WHERE Approved IS NULL";
         System.out.println("TEST");
-        ObservableList<ArrayList<String>> data = FXCollections.<ArrayList<String>>observableArrayList();
+        ObservableList<CityOfficial> data = FXCollections.observableArrayList();
 
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
                 System.out.println("IN LIOOOOOOPP");
-                ArrayList<String> data1 = new ArrayList<String>();
-                data1.add("");
-                data1.add(result.getString("Username"));
-                data1.add(result.getString("EmailAddress"));
-                data1.add(result.getString("City"));
-                data1.add(result.getString("Title"));
-                System.out.println(data1);
-                data.add(data1);
+                data.add(new CityOfficial(result.getString("Username"), result.getString("EmailAddress")
+                ,result.getString("City"), result.getString("State"), result.getString("Title")));
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -75,6 +86,12 @@ public class PendingCOController {
                 stmt.close();
             }
         }
+        usernameCol.setCellValueFactory(cellData -> cellData.getValue().getUsername());
+        emailCol.setCellValueFactory(cellData -> cellData.getValue().getEmail());
+        cityCol.setCellValueFactory(cellData -> cellData.getValue().getCity());
+        stateCol.setCellValueFactory(cellData -> cellData.getValue().getState());
+        titleCol.setCellValueFactory(cellData -> cellData.getValue().getTitle());
+
     }
 
 }
