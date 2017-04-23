@@ -9,8 +9,9 @@ import javafx.scene.control.Button;
  */
 public class MainController {
     private MainFXApp main;
+
     @FXML
-    private Button newButtonButton;
+    private Button newDataButton;
     @FXML
     private Button newLocationButton;
     @FXML
@@ -21,25 +22,30 @@ public class MainController {
     private Button pendingDataPointsButton;
     @FXML
     private Button pendingCOButton;
+
+    public void register(MainFXApp main) {
+        this.main = main;
+    }
+
     public void initialize() {
 
     }
-    public void setScreen(String usertype) {
-        if (usertype.equals("City Scientist")) {
-            filterButton.setVisible(false);
-            poiReportButton.setVisible(false);
-            pendingDataPointsButton.setVisible(false);
-            pendingCOButton.setVisible(false);
-        } else if (usertype.equals("City Official")) {
-            newButtonButton.setVisible(false);
-            newLocationButton.setVisible(false);
-            pendingDataPointsButton.setVisible(false);
-            pendingCOButton.setVisible(false);
-        } else if (usertype.equals("Admin")) {
-            newButtonButton.setVisible(false);
-            newLocationButton.setVisible(false);
-            pendingDataPointsButton.setVisible(false);
-            pendingCOButton.setVisible(false);
+    public void setUser(String userType) {
+        if (userType.equals("City Scientist")) {
+            filterButton.setDisable(true);
+            poiReportButton.setDisable(true);
+            pendingDataPointsButton.setDisable(true);
+            pendingCOButton.setDisable(true);
+        } else if (userType.equals("City Official")) {
+            newDataButton.setDisable(true);
+            newLocationButton.setDisable(true);
+            pendingDataPointsButton.setDisable(true);
+            pendingCOButton.setDisable(true);
+        } else if (userType.equals("Admin")) {
+            newDataButton.setDisable(true);
+            newLocationButton.setDisable(true);
+            pendingDataPointsButton.setDisable(true);
+            pendingCOButton.setDisable(true);
         }
     }
 }

@@ -1,5 +1,6 @@
 package controller;
 import fxapp.MainFXApp;
+import fxapp.UserType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,6 +26,7 @@ public class RegisterController {
     private ComboBox selectState;
     @FXML
     private ComboBox selectCity;
+
     public void register(MainFXApp main) {
         this.main = main;
     }
@@ -37,14 +39,18 @@ public class RegisterController {
     @FXML
     public void initialize() {
         comboBox.getItems().removeAll(comboBox.getItems());
-        comboBox.getItems().addAll("Option Scientist", "City Official");
+        comboBox.getItems().addAll("City Scientist", "City Official");
         comboBox.getSelectionModel().select("City Scientist");
         //ADD CODE WHICH QUEIRES AND GETS ALL THE STATES
 
     }
     @FXML
     public void switchBox() {
-        System.out.println(comboBox.getValue());
+//        if (comboBox.getValue() == "City Official") {
+//            main.setMainScene(UserType.CITY_OFFICIAL);
+//        } else if (comboBox.getValue() == "City Scientist") {
+//            main.setMainScene(UserType.)
+//        }
     }
     @FXML
     public void switchBoxState() {
