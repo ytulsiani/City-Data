@@ -20,8 +20,6 @@
    <rowConstraints>
       <RowConstraints />
       <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
    </rowConstraints>
    <children>
     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="360.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -31,46 +29,45 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <ComboBox fx:id="poiLocationName" layoutX="120.0" layoutY="22.0" prefWidth="150.0" />
-            <Text layoutX="-56.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POI location name:" textAlignment="CENTER" wrappingWidth="216.33330821990967">
+            <Text layoutX="-56.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POI location name:" textAlignment="CENTER" wrappingWidth="216.33330821990967">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Button fx:id="addLocation" alignment="CENTER" layoutX="286.0" layoutY="26.0" mnemonicParsing="false" onAction="#onAddLocationClick" text="add a new location">
+            <Text layoutX="-33.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date of data reading" textAlignment="CENTER" wrappingWidth="157.9999983087182">
                <font>
-                  <Font size="10.0" />
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="poiLocationName" layoutX="126.0" layoutY="26.0" prefWidth="150.0" />
+            <Text layoutX="40.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data type:" textAlignment="CENTER" wrappingWidth="77.50000432506204">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="dataValue" layoutX="125.0" layoutY="182.0" prefHeight="31.0" prefWidth="228.0" />
+            <Text layoutX="40.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data value:" textAlignment="CENTER" wrappingWidth="77.50000432506204">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Button fx:id="back" layoutX="87.0" layoutY="227.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
+            <Button fx:id="submit" layoutX="209.0" layoutY="228.0" mnemonicParsing="false" onAction="#onSubmitClick" text="Submit" />
+            <ComboBox fx:id="dataType" layoutX="126.0" layoutY="146.0" prefWidth="150.0" />
+            <Button fx:id="addLocation" layoutX="290.0" layoutY="28.0" mnemonicParsing="false" onAction="#onAddLocationClick" text="add a new location">
+               <font>
+                  <Font size="11.0" />
                </font>
             </Button>
-            <DatePicker fx:id="dateReading" layoutX="122.0" layoutY="66.0" prefHeight="31.0" prefWidth="192.0" />
-            <Text layoutX="-10.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date of data reading" textAlignment="CENTER" wrappingWidth="133.50000432506204">
+            <DatePicker fx:id="dateReading" layoutX="125.0" layoutY="68.0" prefHeight="31.0" prefWidth="192.0" />
+            <ComboBox fx:id="timeReading1" layoutX="126.0" layoutY="110.0" prefHeight="31.0" prefWidth="87.0" />
+            <ComboBox fx:id="timeReading2" layoutX="221.0" layoutY="110.0" prefHeight="31.0" prefWidth="87.0" />
+            <Text layoutX="-32.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="time of data reading" textAlignment="CENTER" wrappingWidth="157.9999983087182">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <ComboBox fx:id="dataType" layoutX="121.0" layoutY="152.0" prefWidth="150.0" />
-            <Text layoutX="40.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data type:" textAlignment="CENTER" wrappingWidth="77.50000432506204">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <TextField fx:id="dataValue" layoutX="121.0" layoutY="191.0" prefHeight="31.0" prefWidth="147.0" />
-            <Text layoutX="39.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data value:" textAlignment="CENTER" wrappingWidth="77.50000432506204">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Button fx:id="back" layoutX="87.0" layoutY="246.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
-            <Button fx:id="submit" layoutX="209.0" layoutY="246.0" mnemonicParsing="false" onAction="#onSubmitClick" text="Submit" />
-            <ComboBox fx:id="timeReading1" layoutX="120.0" layoutY="110.0" prefHeight="31.0" prefWidth="87.0" />
-            <ComboBox fx:id="timeReading2" layoutX="216.0" layoutY="110.0" prefHeight="31.0" prefWidth="87.0" />
-            <Text layoutX="-9.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="time of data reading" textAlignment="CENTER" wrappingWidth="133.50000432506204"><Text fx:id="errorText" fill="#d30b0b" layoutX="25.0" layoutY="641.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Text fill="#ff0b0b" layoutX="-54.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="216.33330821990967">
+            <Text fx:id="errorText" fill="#f20808" layoutX="-41.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="255.50000432506204">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

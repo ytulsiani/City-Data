@@ -36,11 +36,13 @@ public class AddDPController {
     @FXML
     private TextField dataValue;
     @FXML
+    private Button addLocation;
+    @FXML
     private Button back;
     @FXML
     private Button submit;
-//    @FXML
-//    private Text errorText;
+    @FXML
+    private Text errorText;
 
     @FXML
     public void onAddLocationClick() {
@@ -55,15 +57,15 @@ public class AddDPController {
     @FXML
     public void onSubmitClick() throws SQLException {
         if (poiLocationName.getValue() == null) {
-            System.out.println("Please enter a location name.");
+            errorText.setText("Please enter a location name.");
         } else if (dateReading.getValue() == null) {
-            System.out.println("Please enter a date for data reading");
+            errorText.setText("Please enter a date for data reading");
         } else if ((timeReading1.getValue() == null) || (timeReading2.getValue() == null)) {
-            System.out.println("Please enter time of data reading");
+            errorText.setText("Please enter time of data reading");
         } else if (dataType.getValue() == null) {
-            System.out.println("Please enter a data type.");
+            errorText.setText("Please enter a data type.");
         } else if (dataValue.getText().equals("")) {
-            System.out.println("Please enter a data value.");
+            errorText.setText("Please enter a data value.");
         } else {
             String locationName = poiLocationName.getValue().toString();
             String dateTime = dateReading.getValue() + " " + timeReading1.getValue() + ":" + timeReading2.getValue();
