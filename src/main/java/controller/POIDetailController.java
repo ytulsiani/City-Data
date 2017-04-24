@@ -48,32 +48,35 @@ public class POIDetailController {
 
     public void loadPoint(POI point) {
         this.point = point;
+        locationName = point.getLocation().get();
     }
 
     @FXML
     public void onApplyFilterClick() throws SQLException {
         Statement stmt = null;
-        String query = "SELECT * FROM POI WHERE LocationName = '" + locationName +
+        String query = "SELECT * FROM DATA_POINT WHERE LocationName = '" + locationName +
                 "'";
         if (type.getValue() != null) {
-            query += " AND Type = '" + type.getValue().toString();
+            query += " AND Type = '" + type.getValue().toString() + "'";
         }
         if (!dataValue1.getText().equals("")) {
-            query += " AND DataValue > '" + Integer.parseInt(dataValue1.getText()) + "'";
+            query += " AND DataValue > " + Integer.parseInt(dataValue1.getText());
         }
         if (!dataValue2.getText().equals("")) {
-            query += " AND DataValue < '" + Integer.parseInt(dataValue2.getText()) + "'";
+            query += " AND DataValue < " + Integer.parseInt(dataValue2.getText());
         }
         if(date1.getValue() != null) {
-            System.out.println(date1.getValue().toString());
+            //System.out.println(date1.getValue().toString());
+            query += " AND DateTime > '" + date1.getValue().toString() + "'";
         }
         if(date2.getValue() != null) {
-            System.out.println(date2.getValue().toString());
+            query += " AND DateTime < '" + date2.getValue().toString() + "'";
         }
+        System.out.println(query);
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
-                //
+                System.out.println(result.getString("DateTime"));
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -95,6 +98,15 @@ public class POIDetailController {
 
     @FXML
     public void onFlagClick() {
+    }
+
+    @FXML
+    public void initialize() {
+        type.getItems().removeAll(type.getItems());
+        type.getItems().addAll("Mold", "Air Quality");
+        type.getSelectionModel().select("Mold");
+
+
     }
 
 }
