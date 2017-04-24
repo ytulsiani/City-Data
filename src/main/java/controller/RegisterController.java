@@ -155,7 +155,7 @@ public class RegisterController {
 
         //ADD CODE WHICH QUERIES AND GETS ALL THE STATES
         Statement stmt = null;
-        String query = "SELECT DISTINCT State FROM CITY_STATE";
+        String query = "SELECT DISTINCT State FROM CITY_STATE ORDER BY State";
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
@@ -189,7 +189,7 @@ public class RegisterController {
         Statement stmt = null;
         selectCity.getItems().removeAll(selectCity.getItems());
         String query = "SELECT City FROM CITY_STATE WHERE State = '" +
-                state + "'";
+                state + "' ORDER BY City";
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
