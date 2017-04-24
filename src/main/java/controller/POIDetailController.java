@@ -13,6 +13,8 @@ import fxapp.DataPoint;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
+import java.time.LocalDateTime;
 
 /**
  * Created by Mahati on 4/23/2017.
@@ -51,8 +53,6 @@ public class POIDetailController {
     private Button back;
     @FXML
     private Button flag;
-
-    private DataPoint dataPoint;
 
     private POI point;
 
@@ -119,11 +119,25 @@ public class POIDetailController {
     }
     @FXML
     public void onBackClick() {
-        main.setMainScene(MainFXApp.userType, MainFXApp.user);
+        main.setFilterPOIScene();
     }
 
     @FXML
-    public void onFlagClick() {
+    public void onFlagClick() throws SQLException {
+        String dateNow = java.time.LocalDateTime.now().toString().substring(0,10);
+        Statement stmt = null;
+        String update = "UPDATE POI SET Flag = TRUE, DateFlagged = '" + dateNow + "' WHERE LocationName = '"
+                + locationName + "'";
+        System.out.println(update);
+        try {
+            DBConnection.connectAndUpdate(stmt, update);
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
     }
 
     @FXML

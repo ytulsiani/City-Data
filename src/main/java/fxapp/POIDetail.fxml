@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="550.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.POIDetailController">
+<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="550.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.POIDetailController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -58,7 +58,7 @@
             <TextField fx:id="dataValue2" layoutX="250.0" layoutY="151.0" prefHeight="31.0" prefWidth="44.0" />
             <Label layoutX="215.0" layoutY="157.0" text="to" />
             <Button fx:id="back" layoutX="93.0" layoutY="589.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
-            <Button fx:id="flag" layoutX="250.0" layoutY="589.0" mnemonicParsing="false" onAction="#onFlagClick" text="Flag" />
+            <Button fx:id="flag" layoutX="250.0" layoutY="589.0" mnemonicParsing="false" onAction="#onFlagClick" text="Flag This POI" textFill="#f20101" />
          </children>
       </AnchorPane>
    </children>
