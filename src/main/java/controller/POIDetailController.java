@@ -114,6 +114,7 @@ public class POIDetailController {
         dataValue2.clear();
         date1.setValue(null);
         date2.setValue(null);
+        poiDetailTable.getItems().clear();
 
     }
     @FXML

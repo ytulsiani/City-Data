@@ -136,6 +136,7 @@ public class FilterPOIController {
         flagged.setSelected(false);
         date1.setValue(null);
         date2.setValue(null);
+        table.getItems().clear();
 
     }
     @FXML
