@@ -32,8 +32,6 @@ public class PendingDPController {
     @FXML
     private Button accept;
     @FXML
-    private TableColumn<DataPoint, String> selCol;
-    @FXML
     private TableColumn<DataPoint, String> poiCol;
     @FXML
     private TableColumn<DataPoint, String> dataValCol;

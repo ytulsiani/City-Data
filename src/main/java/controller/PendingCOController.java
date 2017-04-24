@@ -35,8 +35,6 @@ public class PendingCOController {
     @FXML
     private Button accept;
     @FXML
-    private TableColumn<CityOfficial, String> selCol;
-    @FXML
     private TableColumn<CityOfficial, String> usernameCol;
     @FXML
     private TableColumn<CityOfficial, String> emailCol;

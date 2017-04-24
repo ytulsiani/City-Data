@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="664.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PendingCOController">
+<GridPane alignment="center" hgap="10" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="664.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PendingCOController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -37,12 +37,11 @@
             <Button fx:id="accept" layoutX="353.0" layoutY="504.0" mnemonicParsing="false" onAction="#onAcceptClick" text="Accept" />
             <TableView fx:id="pendingCOTable" layoutX="-102.0" layoutY="149.0" prefHeight="323.0" prefWidth="608.0">
               <columns>
-                <TableColumn fx:id="selCol" prefWidth="81.0" text="Select" />
                 <TableColumn fx:id="usernameCol" prefWidth="109.0" text="Username" />
                   <TableColumn fx:id="emailCol" prefWidth="110.0" text="Email" />
                   <TableColumn fx:id="cityCol" prefWidth="112.0" text="City" />
                   <TableColumn fx:id="stateCol" text="State" />
-                  <TableColumn fx:id="titleCol" prefWidth="118.0" text="Title" />
+                  <TableColumn fx:id="titleCol" prefWidth="196.0" text="Title" />
               </columns>
             </TableView>
          </children>

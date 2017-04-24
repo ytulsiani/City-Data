@@ -101,7 +101,7 @@ public class AddDPController {
     public void initialize() throws SQLException {
 
         Statement locName = null;
-        String queryLoc = "SELECT LocationName FROM POI";
+        String queryLoc = "SELECT LocationName FROM POI ORDER BY LocationName";
         try {
             ResultSet result = DBConnection.connectAndQuery(locName, queryLoc);
             while (result.next()) {

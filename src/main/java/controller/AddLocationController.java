@@ -62,7 +62,7 @@ public class AddLocationController {
     @FXML
     public void initialize() throws SQLException {
         Statement stmt = null;
-        String query = "SELECT DISTINCT State FROM CITY_STATE";
+        String query = "SELECT DISTINCT State FROM CITY_STATE ORDER BY State";
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
@@ -82,7 +82,7 @@ public class AddLocationController {
         String state = selectState.getValue().toString();
         Statement stmt = null;
         selectCity.getItems().removeAll(selectCity.getItems());
-        String query = "SELECT City FROM CITY_STATE WHERE State = '" + state + "'";
+        String query = "SELECT City FROM CITY_STATE WHERE State = '" + state + "' ORDER BY City";
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
