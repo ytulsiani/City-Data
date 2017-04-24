@@ -25,6 +25,8 @@ public class LoginController {
     private Text message;
     @FXML
     private Button button;
+    @FXML
+    private Text errorText;
 
     public void register(MainFXApp main) {
         this.main = main;
@@ -39,8 +41,13 @@ public class LoginController {
                 "' AND Password = '" + password + "'";
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
+            boolean correct = false;
             while (result.next()) {
+                correct = true;
                 main.setMainScene(result.getString("UserType"), result.getString("Username"));
+            }
+            if (correct == false) {
+                errorText.setText("Incorrect username or password!");
             }
         } catch (SQLException e) {
             System.out.println(e);
