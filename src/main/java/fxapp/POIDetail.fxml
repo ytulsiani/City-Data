@@ -49,9 +49,9 @@
             <Line endX="180.0" layoutX="200.0" layoutY="322.0" startX="-180.0" />
             <TableView fx:id="poiDetailTable" layoutX="-41.0" layoutY="351.0" prefHeight="226.0" prefWidth="494.0">
               <columns>
-                <TableColumn prefWidth="129.0" text="Data Type" />
-                <TableColumn prefWidth="105.0" text="Data Value" />
-                  <TableColumn prefWidth="257.0" text="Time &amp; Date of Data Reading" />
+                <TableColumn fx:id="dataTypeCol" prefWidth="129.0" text="Data Type" />
+                <TableColumn fx:id="dataValueCol" prefWidth="105.0" text="Data Value" />
+                  <TableColumn fx:id="dateTimeCol" prefWidth="257.0" text="Time &amp; Date of Data Reading" />
               </columns>
             </TableView>
             <TextField fx:id="dataValue1" layoutX="155.0" layoutY="151.0" prefHeight="31.0" prefWidth="44.0" />
