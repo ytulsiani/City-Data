@@ -3,8 +3,12 @@ package controller;
 import fxapp.DBConnection;
 import fxapp.MainFXApp;
 import fxapp.POI;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import fxapp.DataPoint;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,15 +39,24 @@ public class POIDetailController {
     private Button resetFilter;
 
     @FXML
+    private TableColumn<DataPoint, String> dataTypeCol;
+    @FXML
+    private TableColumn<DataPoint, String> dataValueCol;
+    @FXML
+    private TableColumn<DataPoint, String> dateTimeCol;
+
+    @FXML
     private TableView poiDetailTable;
     @FXML
     private Button back;
     @FXML
     private Button flag;
 
-    private String locationName;
+    private DataPoint dataPoint;
 
     private POI point;
+
+    private String locationName;
 
 
     public void loadPoint(POI point) {
@@ -53,6 +66,8 @@ public class POIDetailController {
 
     @FXML
     public void onApplyFilterClick() throws SQLException {
+        ObservableList<DataPoint> data = FXCollections.observableArrayList();
+
         Statement stmt = null;
         String query = "SELECT * FROM DATA_POINT WHERE LocationName = '" + locationName +
                 "'";
@@ -72,11 +87,11 @@ public class POIDetailController {
         if(date2.getValue() != null) {
             query += " AND DateTime < '" + date2.getValue().toString() + "'";
         }
-        System.out.println(query);
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
-                System.out.println(result.getString("DateTime"));
+                DataPoint point = new DataPoint(locationName, result.getString("Type"), result.getString("DataValue"), result.getString("DateTime"));
+                data.add(point);
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -86,9 +101,20 @@ public class POIDetailController {
             }
         }
 
+        dataTypeCol.setCellValueFactory(cellData -> cellData.getValue().getDataType());
+        dataValueCol.setCellValueFactory(cellData -> cellData.getValue().getDataVal());
+        dateTimeCol.setCellValueFactory(cellData -> cellData.getValue().getDateTime());
+
+        poiDetailTable.setItems(data);
     }
     @FXML
     public void onResetFilterClick() {
+        type.setValue(null);
+        dataValue1.clear();
+        dataValue2.clear();
+        date1.setValue(null);
+        date2.setValue(null);
+        poiDetailTable.getItems().clear();
 
     }
     @FXML
@@ -105,8 +131,6 @@ public class POIDetailController {
         type.getItems().removeAll(type.getItems());
         type.getItems().addAll("Mold", "Air Quality");
         type.getSelectionModel().select("Mold");
-
-
     }
 
 }

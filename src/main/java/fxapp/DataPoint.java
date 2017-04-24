@@ -28,5 +28,4 @@ public class DataPoint {
         return dataVal;
     }
     public SimpleStringProperty getDateTime() {return dateTime;}
-
 }
