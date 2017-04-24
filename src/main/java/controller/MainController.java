@@ -62,7 +62,7 @@ public class MainController {
         main.setFilterPOIScene();
     }
     @FXML
-    public void onPOIReport() {
+    public void onPOIReport() throws SQLException{
         main.setPOIReportScene();
     }
     @FXML

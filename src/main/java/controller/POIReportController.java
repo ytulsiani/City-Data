@@ -49,35 +49,9 @@ public class POIReportController {
     private TableColumn<POIReport, String> numDPCol;
     @FXML
     private TableColumn<POIReport, String> flaggedCol;
-
-    @FXML
-    public void onBackClick() {
-        main.setMainScene(MainFXApp.userType, MainFXApp.user);
-    }
     @FXML
     public void initialize() throws SQLException {
 
-        ObservableList<POIReport> data = FXCollections.observableArrayList();
-        Statement stmt = null;
-        String query = "SELECT POI.LocationName, POI.City, POI.State, Round(IfNULL(MT.MoldMin,0),2), Round(IfNULL(MT.MoldAvg,0),2), Round(IfNULL(MT.MoldMax,0),2), Round(IfNULL(AQT.AQMin,0),2), Round(IfNULL(AQT.AQAvg,0),2), Round(IfNULL(AQT.AQMax,0),2), IfNULL(AQT.AQCount,0) + IfNULL(MT.MoldCount,0), POI.Flag from POI LEFT OUTER JOIN ( SELECT D.LocationName as LocationName, D.Type as Type, COUNT(D.DataValue) as MoldCount, MAX(D.DataValue) as MoldMax, MIN(D.DataValue) as MoldMin , AVG(D.DataValue) as MoldAvg FROM POI P, DATA_POINT D WHERE P.LocationName= D.LocationName AND D.Type = 'Mold' GROUP BY D.LocationName, D.Type ) MT ON POI.LocationName = MT.LocationName LEFT OUTER JOIN ( SELECT D.LocationName as LocationName, D.Type as Type, COUNT(D.DataValue) AS AQCount, MAX(D.DataValue) AS AQMax, MIN(D.DataValue) AS AQMin, AVG(D.DataValue) As AQAvg FROM POI P, DATA_POINT D WHERE P.LocationName= D.LocationName AND D.Type = 'Air Quality' GROUP BY D.LocationName, D.Type ) AQT ON POI.LocationName = AQT.LocationName";
-        try {
-            System.out.println("IN TRY CATCH");
-            ResultSet result = DBConnection.connectAndQuery(stmt, query);
-            while (result.next()) {
-                System.out.println("TffffffffffffffffffffffffEST");
-                POIReport poiReport = new POIReport(result.getString("LocationName"), result.getString("City"),
-                        result.getString("State"), result.getString("MoldMin"), result.getString("MoldAvg"),
-                        result.getString("MoldMax"), result.getString("AQMin"), result.getString("AQAvg"),
-                        result.getString("AQMax"), result.getString("Flag"));
-                data.add(poiReport);
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        } finally {
-            if (stmt != null) {
-                stmt.close();
-            }
-        }
         poiLocationCol.setCellValueFactory(cellData -> cellData.getValue().getPOILocation());
         cityCol.setCellValueFactory(cellData -> cellData.getValue().getCity());
         moldMinCol.setCellValueFactory(cellData -> cellData.getValue().getMoldMin());
@@ -89,6 +63,35 @@ public class POIReportController {
         numDPCol.setCellValueFactory(cellData -> cellData.getValue().getNumDP());
         flaggedCol.setCellValueFactory(cellData -> cellData.getValue().getFlagged());
 
+    }
+
+    @FXML
+    public void onBackClick() {
+        main.setMainScene(MainFXApp.userType, MainFXApp.user);
+    }
+    public void loadData() throws SQLException{
+        System.out.println("YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        ObservableList<POIReport> data = FXCollections.observableArrayList();
+        Statement stmt = null;
+        String query = "SELECT POI.LocationName, POI.City, POI.State, Round(IfNULL(MT.MoldMin,0),2) AS MoldMin, Round(IfNULL(MT.MoldAvg,0),2) AS MoldAvg, Round(IfNULL(MT.MoldMax,0),2) AS MoldMax, Round(IfNULL(AQT.AQMin,0),2) as AQMin, Round(IfNULL(AQT.AQAvg,0),2) as AQAvg, Round(IfNULL(AQT.AQMax,0),2) AS AQMax, (IfNULL(AQT.AQCount,0) + IfNULL(MT.MoldCount,0)) AS Counter, POI.Flag from POI LEFT OUTER JOIN ( SELECT D.LocationName as LocationName, D.Type as Type, COUNT(D.DataValue) as MoldCount, MAX(D.DataValue) as MoldMax, MIN(D.DataValue) as MoldMin, AVG(D.DataValue) as MoldAvg FROM POI P, DATA_POINT D WHERE P.LocationName= D.LocationName AND D.Type = 'Mold' GROUP BY D.LocationName, D.Type ) MT ON POI.LocationName = MT.LocationName LEFT OUTER JOIN ( SELECT D.LocationName as LocationName, D.Type as Type, COUNT(D.DataValue) AS AQCount, MAX(D.DataValue) AS AQMax, MIN(D.DataValue) AS AQMin, AVG(D.DataValue) As AQAvg FROM POI P, DATA_POINT D WHERE P.LocationName= D.LocationName AND D.Type = 'Air Quality' GROUP BY D.LocationName, D.Type ) AQT ON POI.LocationName = AQT.LocationName";
+        try {
+            System.out.println("IN TRY CATCH");
+            ResultSet result = DBConnection.connectAndQuery(stmt, query);
+            while (result.next()) {
+                System.out.println("TffffffffffffffffffffffffEST");
+                POIReport poiReport = new POIReport(result.getString("LocationName"), result.getString("City"),
+                        result.getString("State"), result.getString("MoldMin"), result.getString("MoldAvg"),
+                        result.getString("MoldMax"), result.getString("AQMin"), result.getString("AQAvg"),
+                        result.getString("AQMax"), result.getString("Counter"), result.getString("Flag"));
+                data.add(poiReport);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
         poiReportTable.setItems(data);
 
     }

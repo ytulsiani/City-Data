@@ -83,8 +83,9 @@ public class MainFXApp extends Application {
     public void setFilterPOIScene() {
         setScene(filterScene, "Filter POI");
     }
-    public void setPOIReportScene() {
+    public void setPOIReportScene() throws SQLException {
         setScene(poiReportScene, "POI Report");
+        poiReportController.loadData();
     }
 
     public void setPendingDPScene() throws SQLException{
