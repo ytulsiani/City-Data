@@ -31,7 +31,14 @@ public class POIReport {
         aqAvg.set(aqAvg1);
         aqMax.set(aqMax1);
         numDP.set(numDP1);
-        flagged.set(flagged1);
+        if (flagged1 == null) {
+            flagged.set("No");
+        } else if (flagged1.equals("1")) {
+            flagged.set("Yes");
+        } else {
+            flagged.set("No");
+        }
+
     }
     public SimpleStringProperty getPOILocation() {
         return poiLocation;

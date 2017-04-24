@@ -16,9 +16,18 @@ public class POI {
     public POI(String locationName1, String flag1, String dateFlagged1, String zipCode1, String city1, String state1) {
         System.out.println(locationName1);
         locationName.set(locationName1);
-        System.out.println("HELOoOooooooo");
-        flag.set(flag1);
-        dateFlagged.set(dateFlagged1);
+        if (flag1 == null) {
+            flag.set("No");
+        } else if (flag1.equals("1")) {
+            flag.set("Yes");
+        } else {
+            flag.set("No");
+        }
+        if (dateFlagged1 == null) {
+            dateFlagged.set("NA");
+        } else {
+            dateFlagged.set(dateFlagged1);
+        }
         zipCode.set(zipCode1);
         city.set(city1);
         state.set(state1);
