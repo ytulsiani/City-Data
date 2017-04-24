@@ -142,11 +142,11 @@ public class FilterPOIController {
     @FXML
     public void initialize() throws SQLException {
         Statement stmt = null;
-        String query = "SELECT DISTINCT LocationName, City, State FROM POI";
+        String query = "SELECT DISTINCT LocationName, City, State FROM POI ORDER BY LocationName";
         Statement stmt1 = null;
-        String query1 = "SELECT DISTINCT City FROM POI";
+        String query1 = "SELECT DISTINCT City FROM POI ORDER BY City";
         Statement stmt2 = null;
-        String query2 = "SELECT DISTINCT State FROM POI";
+        String query2 = "SELECT DISTINCT State FROM POI ORDER BY State";
 
         try {
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
