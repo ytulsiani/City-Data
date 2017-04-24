@@ -91,8 +91,10 @@ public class FilterPOIController {
         }  if (!zipCode.getText().equals("")) {
             query += "AND ZipCode = '" + zipCode.getText() + "' ";
         } if (date1.getValue() != null) {
+//            query += "AND DateFlagged > '" + date1.getValue().toString() + "' ";
             System.out.println("DATE1: " + date1.getValue().toString());
         } if (date2.getValue() != null) {
+//            query += "AND DateFlagged < '" + date2.getValue().toString() + "' ";
             System.out.println("DATE2: " + date2.getValue().toString());
         }
         Statement stmt = null;
@@ -104,6 +106,7 @@ public class FilterPOIController {
                 POI poi = new POI(result.getString("LocationName"), result.getString("Flag"), result.getString("DateFlagged"),
                         result.getString("ZipCode"), result.getString("City"), result.getString("State"));
                 data.add(poi);
+                System.out.println(data.size());
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -126,6 +129,14 @@ public class FilterPOIController {
 
     @FXML
     public void onResetFilterClick() {
+        locationName.setValue(null);
+        city.setValue(null);
+        state.setValue(null);
+        zipCode.clear();
+        flagged.setSelected(false);
+        date1.setValue(null);
+        date2.setValue(null);
+
     }
     @FXML
     public void initialize() throws SQLException {
