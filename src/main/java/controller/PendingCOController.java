@@ -47,9 +47,6 @@ public class PendingCOController {
     @FXML
     private TableColumn<CityOfficial, String> titleCol;
     @FXML
-    private TableColumn<CityOfficial, String> dateCol;
-
-    @FXML
     public void initalize() {
 
     }
@@ -59,11 +56,41 @@ public class PendingCOController {
     }
 
     @FXML
-    public void onRejectClick() {
+    public void onRejectClick() throws SQLException {
+        CityOfficial cityOfficial = (CityOfficial) pendingCOTable.getSelectionModel().getSelectedItem();
+        Statement stmt = null;
+        String update = "UPDATE  CITY_OFFICIAL SET Approved = FALSE WHERE Username = '"
+                + cityOfficial.getUsername().get() + "'";
+        System.out.println(update);
+        try {
+            DBConnection.connectAndUpdate(stmt, update);
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+
     }
 
     @FXML
-    public void onAcceptClick() {
+    public void onAcceptClick() throws SQLException{
+        CityOfficial cityOfficial = (CityOfficial) pendingCOTable.getSelectionModel().getSelectedItem();
+        Statement stmt = null;
+        String update = "UPDATE  CITY_OFFICIAL SET Approved = TRUE WHERE Username = '"
+                + cityOfficial.getUsername().get() + "'";
+        System.out.println(update);
+        try {
+            DBConnection.connectAndUpdate(stmt, update);
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+
     }
     public void loadData() throws SQLException {
         Statement stmt = null;

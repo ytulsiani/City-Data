@@ -1,9 +1,6 @@
 package controller;
 
-import fxapp.DBConnection;
-import fxapp.DataPoint;
-import fxapp.MainFXApp;
-import fxapp.POI;
+import fxapp.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -53,12 +50,41 @@ public class PendingDPController {
     }
 
     @FXML
-    public void onRejectClick() {
+    public void onRejectClick() throws SQLException {
+        DataPoint dataPoint = (DataPoint) pendingDPTable.getSelectionModel().getSelectedItem();
+        Statement stmt = null;
+        String update = "UPDATE DATA_POINT SET Accepted = FALSE WHERE LocationName = '"
+                + dataPoint.getLocation().get() + "'";
+        System.out.println(update);
+        try {
+            DBConnection.connectAndUpdate(stmt, update);
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+
     }
 
     @FXML
-    public void onAcceptClick() {
-        System.out.println("ACCEPT CLICK");
+    public void onAcceptClick() throws SQLException {
+        DataPoint dataPoint = (DataPoint) pendingDPTable.getSelectionModel().getSelectedItem();
+        Statement stmt = null;
+        String update = "UPDATE DATA_POINT SET Accepted = TRUE WHERE LocationName = '"
+                + dataPoint.getLocation().get() + "'";
+        System.out.println(update);
+        try {
+            DBConnection.connectAndUpdate(stmt, update);
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+
     }
     @FXML
     public void initalize() throws SQLException {
