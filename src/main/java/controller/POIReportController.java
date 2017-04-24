@@ -2,10 +2,13 @@ package controller;
 
 import fxapp.DBConnection;
 import fxapp.MainFXApp;
+import fxapp.POI;
+import fxapp.POIReport;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.sql.ResultSet;
@@ -26,6 +29,26 @@ public class POIReportController {
     private TableView poiReportTable;
     @FXML
     private Button back;
+    @FXML
+    private TableColumn<POIReport, String> poiLocationCol;
+    @FXML
+    private TableColumn<POIReport, String> cityCol;
+    @FXML
+    private TableColumn<POIReport, String> moldMinCol;
+    @FXML
+    private TableColumn<POIReport, String> moldAvgCol;
+    @FXML
+    private TableColumn<POIReport, String> moldMaxCol;
+    @FXML
+    private TableColumn<POIReport, String> aqMinCol;
+    @FXML
+    private TableColumn<POIReport, String> aqAvgCol;
+    @FXML
+    private TableColumn<POIReport, String> aqMaxCol;
+    @FXML
+    private TableColumn<POIReport, String> numDPCol;
+    @FXML
+    private TableColumn<POIReport, String> flaggedCol;
 
     @FXML
     public void onBackClick() {
@@ -33,27 +56,41 @@ public class POIReportController {
     }
     @FXML
     public void initialize() throws SQLException {
-        Statement stmt = null;
-        String query = "SELECT * FROM POI";
-        ObservableList<String[]> table = FXCollections.observableArrayList(
 
-        );
+        ObservableList<POIReport> data = FXCollections.observableArrayList();
+        Statement stmt = null;
+        String query = "SELECT POI.LocationName, POI.City, POI.State, Round(IfNULL(MT.MoldMin,0),2), Round(IfNULL(MT.MoldAvg,0),2), Round(IfNULL(MT.MoldMax,0),2), Round(IfNULL(AQT.AQMin,0),2), Round(IfNULL(AQT.AQAvg,0),2), Round(IfNULL(AQT.AQMax,0),2), IfNULL(AQT.AQCount,0) + IfNULL(MT.MoldCount,0), POI.Flag from POI LEFT OUTER JOIN ( SELECT D.LocationName as LocationName, D.Type as Type, COUNT(D.DataValue) as MoldCount, MAX(D.DataValue) as MoldMax, MIN(D.DataValue) as MoldMin , AVG(D.DataValue) as MoldAvg FROM POI P, DATA_POINT D WHERE P.LocationName= D.LocationName AND D.Type = 'Mold' GROUP BY D.LocationName, D.Type ) MT ON POI.LocationName = MT.LocationName LEFT OUTER JOIN ( SELECT D.LocationName as LocationName, D.Type as Type, COUNT(D.DataValue) AS AQCount, MAX(D.DataValue) AS AQMax, MIN(D.DataValue) AS AQMin, AVG(D.DataValue) As AQAvg FROM POI P, DATA_POINT D WHERE P.LocationName= D.LocationName AND D.Type = 'Air Quality' GROUP BY D.LocationName, D.Type ) AQT ON POI.LocationName = AQT.LocationName";
         try {
+            System.out.println("IN TRY CATCH");
             ResultSet result = DBConnection.connectAndQuery(stmt, query);
             while (result.next()) {
-
-                //table.add(["", ""]);
-                //CODE FOR ADDING TO TABLE
-
+                System.out.println("TffffffffffffffffffffffffEST");
+                POIReport poiReport = new POIReport(result.getString("LocationName"), result.getString("City"),
+                        result.getString("State"), result.getString("MoldMin"), result.getString("MoldAvg"),
+                        result.getString("MoldMax"), result.getString("AQMin"), result.getString("AQAvg"),
+                        result.getString("AQMax"), result.getString("Flag"));
+                data.add(poiReport);
             }
         } catch (SQLException e) {
             System.out.println(e);
         } finally {
-            poiReportTable.setItems(table);
             if (stmt != null) {
                 stmt.close();
             }
         }
+        poiLocationCol.setCellValueFactory(cellData -> cellData.getValue().getPOILocation());
+        cityCol.setCellValueFactory(cellData -> cellData.getValue().getCity());
+        moldMinCol.setCellValueFactory(cellData -> cellData.getValue().getMoldMin());
+        moldAvgCol.setCellValueFactory(cellData -> cellData.getValue().getMoldAvg());
+        moldMaxCol.setCellValueFactory(cellData -> cellData.getValue().getMoldMax());
+        aqMinCol.setCellValueFactory(cellData -> cellData.getValue().getAQMin());
+        aqAvgCol.setCellValueFactory(cellData -> cellData.getValue().getAQAvg());
+        aqMaxCol.setCellValueFactory(cellData -> cellData.getValue().getAQMax());
+        numDPCol.setCellValueFactory(cellData -> cellData.getValue().getNumDP());
+        flaggedCol.setCellValueFactory(cellData -> cellData.getValue().getFlagged());
+
+        poiReportTable.setItems(data);
+
     }
 
 }

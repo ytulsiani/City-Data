@@ -92,10 +92,10 @@ public class FilterPOIController {
             query += "AND ZipCode = '" + zipCode.getText() + "' ";
         } if (date1.getValue() != null) {
 //            query += "AND DateFlagged > '" + date1.getValue().toString() + "' ";
-            System.out.println("DATE1: " + date1.getValue().toString());
+            query += " AND DateFlagged > '" + date1.getValue().toString() + "'";
         } if (date2.getValue() != null) {
 //            query += "AND DateFlagged < '" + date2.getValue().toString() + "' ";
-            System.out.println("DATE2: " + date2.getValue().toString());
+            query += " AND DateFlagged < '" + date2.getValue().toString() + "'";
         }
         Statement stmt = null;
         try {

@@ -20,7 +20,7 @@ public class POIReport {
 
     public POIReport(String poiLocation1, String city1, String state1, String moldMin1,
                      String moldAvg1, String moldMax1, String aqMin1, String aqAvg1, String aqMax1,
-                     String numDP1, String flagged1) {
+                     String flagged1) {
         poiLocation.set(poiLocation1);
         city.set(city1);
         state.set(state1);
@@ -30,7 +30,7 @@ public class POIReport {
         aqMin.set(aqMin1);
         aqAvg.set(aqAvg1);
         aqMax.set(aqMax1);
-        numDP.set(numDP1);
+        //numDP.set(numDP1);
         flagged.set(flagged1);
     }
     public SimpleStringProperty getPOILocation() {
